@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "461367085012",
+    "firebase_url": "https://db-app-onmovie-default-rtdb.firebaseio.com",
+    "project_id": "db-app-onmovie",
+    "storage_bucket": "db-app-onmovie.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:461367085012:android:a676fa66f1bdc2df347841",
+        "android_client_info": {
+          "package_name": "com.sinhvien.android_java_onmovie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "461367085012-vh4i8bol6c78bm0gss6lf5jvpgnmmpga.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCayudii9QCZOWTy6NXW0PUmU2WByL5V0Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "461367085012-vh4i8bol6c78bm0gss6lf5jvpgnmmpga.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
