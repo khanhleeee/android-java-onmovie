@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         signupBtn = findViewById(R.id.signup_btn);
         signupBtn.setOnClickListener(v -> {
-            mAuth.createUserWithEmailAndPassword("khanhle@gmail.com", "123456")
+            mAuth.createUserWithEmailAndPassword("ngannguyen@gmail.com", "123456")
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         loginBtn = findViewById(R.id.login_btn);
         loginBtn.setOnClickListener(v -> {
-            mAuth.signInWithEmailAndPassword("khanhle@gmail.com", "123456")
+            mAuth.signInWithEmailAndPassword("ngannguyen@gmail.com", "123456")
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
