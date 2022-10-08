@@ -22,14 +22,15 @@
         android:layout_width="312dp"
         android:layout_height="48dp"
         android:layout_marginTop="5dp"
+        android:background="@drawable/bg_input"
         android:ems="10"
         android:hint="Enter email"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        android:background="@drawable/bg_input"
         android:textColorHint="@color/tab_indicate_gray"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tilteEmailLogin" />
 
@@ -138,10 +139,13 @@
         android:textColor="@color/white"
         android:textSize="13dp"
         android:textStyle="bold"
+        android:onClick="onClick"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+        tools:ignore="OnClick" />
 
     <View
         android:id="@+id/underlineSignUpLogin"
