@@ -51,7 +51,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:textColor="@color/intro_title_color"
         android:background="@drawable/bg_primary_btn"
-        android:id="@+id/button"
+        android:id="@+id/btnStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="64dp"
