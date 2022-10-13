@@ -16,7 +16,18 @@
         android:theme="@style/Theme.Android_Java_onMovie"
         tools:targetApi="31">
         <activity
+            android:name=".NickNameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignInActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".WelcomeActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,18 +35,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".WelcomeActivity"
-            android:exported="true">
 
-        </activity>
         <activity
             android:name=".IntroActivity"
             android:exported="true"
             android:label="@string/title_activity_intro"
-            android:theme="@style/Theme.Android_Java_onMovie.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.Android_Java_onMovie.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />

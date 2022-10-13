@@ -26,6 +26,7 @@ public class SignInActivity extends AppCompatActivity {
 
     EditText etEmail, etPass;
     Button btnLogin;
+    TextView tvSignUp;
 
 
     private FirebaseAuth mAuth;
@@ -35,9 +36,19 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        tvSignUp = findViewById(R.id.tvSignUp);
         etEmail = findViewById(R.id.etEmailLogin);
         etPass = findViewById(R.id.etPasswordLogin);
         btnLogin = findViewById(R.id.btnLogin);
+
+        tvSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent loginToSignUp = new Intent(SignInActivity.this, SignUpActivity.class);
+                startActivity(loginToSignUp);
+            }
+        });
+
 
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
