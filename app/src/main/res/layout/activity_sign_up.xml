@@ -4,32 +4,167 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".SignUpActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar2"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSignUp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/background"
-        android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_primary_btn"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Đăng ký"
+        android:textColor="@color/intro_title_color"
+        app:layout_constraintEnd_toEndOf="@+id/etComfirmPasswordSignUp"
+        app:layout_constraintStart_toStartOf="@+id/etComfirmPasswordSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/etComfirmPasswordSignUp" />
 
-    <fragment
-        android:id="@+id/nav_signin"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+    <EditText
+        android:id="@+id/etEmailSignUp"
+        android:layout_width="312dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bg_input"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter email"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/tab_indicate_gray"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <EditText
+        android:id="@+id/etPasswordSignUp"
+        android:layout_width="312dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_input"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Enter password"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/tab_indicate_gray"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/etEmailSignUp"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etEmailSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailSignUp" />
+
+    <EditText
+        android:id="@+id/etComfirmPasswordSignUp"
+        android:layout_width="312dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_input"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Enter password"
+        android:paddingLeft="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/tab_indicate_gray"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/etPasswordSignUp"
+        app:layout_constraintStart_toStartOf="@+id/etPasswordSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordSignUp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="272dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
-        app:layout_constraintVertical_bias="0.0"
-        app:navGraph="@navigation/nav_signup" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textColor="@color/tab_indicate_gray"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/etEmailSignUp"
+        app:layout_constraintEnd_toEndOf="@+id/etEmailSignUp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etEmailSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvComfirmPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirm Password"
+        android:textColor="@color/tab_indicate_gray"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/etComfirmPasswordSignUp"
+        app:layout_constraintEnd_toEndOf="@+id/etComfirmPasswordSignUp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etComfirmPasswordSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordSignUp"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Password"
+        android:textColor="@color/tab_indicate_gray"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/etPasswordSignUp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etPasswordSignUp"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailSignUp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:text="Bạn đã có tài khoản?"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="@+id/btnSignUp"
+        app:layout_constraintHorizontal_bias="0.69"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+
+    <TextView
+        android:id="@+id/tvSignInBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="70dp"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:text="Đăng nhập ngay"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
+        tools:ignore="OnClick" />
+
+    <View
+        android:id="@+id/underlineSignUpLogin"
+        android:layout_width="120dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="-10dp"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSignInBack" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
