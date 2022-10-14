@@ -3,6 +3,7 @@ package com.sinhvien.android_java_onmovie;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
@@ -72,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
         logoutBtn = findViewById(R.id.logout_btn);
         logoutBtn.setOnClickListener(v -> {
             mAuth.signOut();
-            textView.setText("Log Out");
+            Intent logout = new Intent(MainActivity.this, SignInActivity.class);
+            startActivity(logout);
         });
     }
 
