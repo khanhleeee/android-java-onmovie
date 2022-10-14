@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NickNameFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignUpComplete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:background="@drawable/bg_primary_btn"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Hoàn tất́"
+            android:textColor="@color/intro_title_color"
+            app:layout_constraintEnd_toEndOf="@+id/etNickName"
+            app:layout_constraintStart_toStartOf="@+id/etNickName"
+            app:layout_constraintTop_toBottomOf="@+id/etNickName" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nick name"
+            android:textColor="@color/tab_indicate_gray"
+            android:textSize="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/etNickName"
+            app:layout_constraintEnd_toEndOf="@+id/etNickName"
+            app:layout_constraintHorizontal_bias="0.051"
+            app:layout_constraintStart_toStartOf="@+id/etNickName"
+            app:layout_constraintTop_toBottomOf="@+id/textView13"
+            app:layout_constraintVertical_bias="0.914" />
+
+        <EditText
+            android:id="@+id/etNickName"
+            android:layout_width="312dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/bg_input"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/tab_indicate_gray"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView13"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="262dp"
+            android:layout_height="65dp"
+            android:layout_marginTop="88dp"
+            android:gravity="center"
+            android:text="Hãy nhập nickname của bạn để hoàn tất việc đăng ký"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
