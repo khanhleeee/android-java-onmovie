@@ -18,6 +18,8 @@ public class WelcomeActivity extends AppCompatActivity {
     ImageView logo, imgPopcorn, imgFilmPopcorn;
     Animation topAnimation, bottomAnimation;
     Timer timer;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

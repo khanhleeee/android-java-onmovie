@@ -13,14 +13,15 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSignUpComplete"
-            android:layout_width="wrap_content"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="28dp"
             android:background="@drawable/bg_primary_btn"
             android:fontFamily="@font/montserrat_bold"
             android:text="Hoàn tất́"
             android:textColor="@color/intro_title_color"
             app:layout_constraintEnd_toEndOf="@+id/etNickName"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/etNickName"
             app:layout_constraintTop_toBottomOf="@+id/etNickName" />
 
