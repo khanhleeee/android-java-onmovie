@@ -57,17 +57,17 @@ public class SignInActivity extends AppCompatActivity {
                 String email = etEmail.getText().toString().trim();
                 String pass = etPass.getText().toString().trim();
 
-                if(email.isEmpty() || pass.isEmpty()){
-                    Toast.makeText(SignInActivity.this, "Please enter all information !", Toast.LENGTH_SHORT).show();
-                }
-                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    Toast.makeText(SignInActivity.this, "Please enter the correct email format.!", Toast.LENGTH_SHORT).show();
-                }
-//                else if(!isValidPassword(pass)) {
-//                    Toast.makeText(SignInActivity.this, "Password must be more than 6 characters " +
-//                            "(a-z, A-Z, number, special characters)!", Toast.LENGTH_SHORT).show();
+//                if(email.isEmpty() || pass.isEmpty()){
+//                    Toast.makeText(SignInActivity.this, "Please enter all information !", Toast.LENGTH_SHORT).show();
 //                }
-                else {
+//                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//                    Toast.makeText(SignInActivity.this, "Please enter the correct email format.!", Toast.LENGTH_SHORT).show();
+//                }
+////                else if(!isValidPassword(pass)) {
+////                    Toast.makeText(SignInActivity.this, "Password must be more than 6 characters " +
+////                            "(a-z, A-Z, number, special characters)!", Toast.LENGTH_SHORT).show();
+////                }
+//                else {
                     Toast.makeText(SignInActivity.this, "OK", Toast.LENGTH_SHORT).show();
                     mAuth = FirebaseAuth.getInstance();
                     mAuth.signInWithEmailAndPassword("ngannguyen@gmail.com", "123456")
@@ -88,7 +88,7 @@ public class SignInActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                }
+//                }
             }
         });
     }

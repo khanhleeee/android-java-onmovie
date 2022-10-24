@@ -19,5 +19,6 @@
         <color name="intro_title_color">#EFEFEF</color>
         <color name="tab_indicate_gray">#C9C9C9</color>
         <color name="hint_color">#8D8D8D</color>
+        <color name="outline_search_color">#4E4E4E</color>
 
     </resources>
