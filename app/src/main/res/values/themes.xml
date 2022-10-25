@@ -3,7 +3,7 @@
     <style name="Theme.Android_Java_onMovie" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/gradient_end_color</item>
-        <item name="colorPrimaryVariant">@color/gradient_end_color</item>
+        <item name="colorPrimaryVariant">@color/black</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/gradient_start_color</item>

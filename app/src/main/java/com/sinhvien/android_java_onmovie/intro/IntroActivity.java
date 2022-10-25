@@ -1,8 +1,7 @@
-package com.sinhvien.android_java_onmovie;
+package com.sinhvien.android_java_onmovie.intro;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
@@ -12,9 +11,9 @@ import android.widget.Button;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.sinhvien.android_java_onmovie.R;
+import com.sinhvien.android_java_onmovie.authentic.SignInActivity;
+import com.sinhvien.android_java_onmovie.adapter.IntroViewPagerAdapter;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -22,6 +21,7 @@ public class IntroActivity extends AppCompatActivity {
     IntroViewPagerAdapter introViewPagerAdapter;
     TabLayout tabLayout;
     Button btnStart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

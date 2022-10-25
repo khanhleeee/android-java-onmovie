@@ -1,4 +1,4 @@
-package com.sinhvien.android_java_onmovie;
+package com.sinhvien.android_java_onmovie.authentic;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.sinhvien.android_java_onmovie.R;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/nickNameFragment"
-        android:name="com.sinhvien.android_java_onmovie.NickNameFragment"
+        android:name="com.sinhvien.android_java_onmovie.authentic.NickNameFragment"
         android:label="fragment_nick_name"
         tools:layout="@layout/fragment_nick_name" />
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.sinhvien.android_java_onmovie.SignUpFragment"
+        android:name="com.sinhvien.android_java_onmovie.authentic.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
