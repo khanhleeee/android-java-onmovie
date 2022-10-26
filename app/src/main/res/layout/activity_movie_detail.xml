@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    tools:context=".MovieDetail"
+    tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck,SpeakableTextPresentCheck">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/back_img"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:cardCornerRadius="10dp">
+
+                <ImageView
+                    android:id="@+id/backdrop_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/backdropavatar" />
+
+                <ImageView
+                    android:id="@+id/play_movie_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/group138"
+                    android:layout_gravity="center"/>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_movie_name"
+                android:layout_marginTop="15dp"
+                android:textSize="23dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Avatar 1"
+                android:layout_marginLeft="30dp"
+                android:textColor="#FFFFFF" />
+
+            <androidx.cardview.widget.CardView
+                app:cardBackgroundColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp">
+
+                <ImageView
+                    android:id="@+id/tv_season"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="16dp"
+                    app:srcCompat="@drawable/season_btn_bg" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="48dp"
+                    android:layout_marginTop="7dp"
+                    android:text="Mùa 1"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/season2_img"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="100dp"
+                    app:srcCompat="@drawable/season_btn_grey" />
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="132dp"
+                    android:layout_marginTop="7dp"
+                    android:text="Mùa 2"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="@color/black">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txtKeyOfYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="28dp"
+                        android:text="Năm phát hành: "
+                        android:textColor="@color/tab_indicate_gray"
+                        android:textStyle="bold"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/txtYear"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2020"
+                        android:textColor="@color/tab_indicate_gray"
+                        android:textStyle="bold"
+                        android:textSize="15dp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            app:cardBackgroundColor="@color/black">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtKeyOfCountries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:text="Quốc gia: "
+                    android:textColor="@color/tab_indicate_gray"
+                    android:textStyle="bold"
+                    android:textSize="15dp"/>
+
+                <TextView
+                    android:id="@+id/txtCountries"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mỹ"
+                    android:textColor="@color/tab_indicate_gray"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            app:cardBackgroundColor="@color/black">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtKeyOfGen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:text="Thể loại: "
+                    android:textColor="@color/tab_indicate_gray"
+                    android:textStyle="bold"
+                    android:textSize="15dp"/>
+
+                <TextView
+                    android:id="@+id/txtGen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hành động, kịch tính, gây cấn"
+                    android:textColor="@color/tab_indicate_gray"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            app:cardBackgroundColor="@color/black">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtKeyOfLimite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:text="Giới hạn: "
+                    android:textColor="@color/tab_indicate_gray"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/tv_content_limitedAge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Trên 16 tuổi"
+                    android:textColor="@color/tab_indicate_gray"
+                    android:textStyle="bold"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="@color/black">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/txtContentTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="28dp"
+                    android:text="Nội dung"
+                    android:textColor="@color/white"
+                    android:textSize="19dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginRight="28dp"
+                    android:textColor="@color/tab_indicate_gray"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:text="Sau khi tìm thấy cơ thể vật chủ trong tay phóng viên điều tra Eddie Brock, người ngoài hành tinh symbiote phải đối mặt với kẻ thù mới. Carnage, bản ngã thay thế của kẻ giết người hàng loạt Cletus Kasady." />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
