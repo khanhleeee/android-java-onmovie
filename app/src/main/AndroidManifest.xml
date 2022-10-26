@@ -16,17 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Android_Java_onMovie"
-        tools:targetApi="31"
-        >
+        tools:targetApi="31">
         <activity
             android:name=".SearchActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".authentic.NickNameActivity"
@@ -38,20 +36,24 @@
             android:name=".authentic.SignInActivity"
             android:exported="true">
         </activity>
+
         <activity
             android:name=".intro.WelcomeActivity"
-            android:exported="true" >
+            android:exported="true">
 
+            android:name=".authentic.SignInActivity"
+            android:exported="true">
         </activity>
         <activity
             android:name=".intro.IntroActivity"
             android:exported="true"
             android:label="@string/title_activity_intro"
-            android:theme="@style/Theme.Android_Java_onMovie.NoActionBar" />
+            android:theme="@style/Theme.Android_Java_onMovie.NoActionBar">
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" >
-
         </activity>
     </application>
 
