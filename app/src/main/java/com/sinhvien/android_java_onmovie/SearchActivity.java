@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +36,6 @@ public class SearchActivity extends AppCompatActivity implements FilmSearchAdapt
         toolbar.setTitle("Tìm kiếm");
         setSupportActionBar(toolbar);
         recyclerView = findViewById(R.id.searchRecyclerView);
-
 
         filmSearchAdapter = new FilmSearchAdapter(listFilm,this);
         recyclerView.setAdapter(filmSearchAdapter);
@@ -76,9 +74,9 @@ public class SearchActivity extends AppCompatActivity implements FilmSearchAdapt
 
     }
 
-
     @Override
     public void OnSearchItemClickListener(Film film) {
 
     }
+
 }
