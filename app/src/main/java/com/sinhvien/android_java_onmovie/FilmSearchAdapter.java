@@ -14,24 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.sinhvien.android_java_onmovie.model.Film;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FilmSearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    List<Film> listFilm;
-//    private OnSearchItemClickListener mListener;
-
-//    public interface OnSearchItemClickListener {
-//        void OnSearchItemClickListener(Film film);
-//    }
-
-    public FilmAdapter( List<Film> listFilms) {
-        listFilm = listFilms;
-//        mListener = mListener;
+    public interface OnSearchItemClickListener {
+        void OnSearchItemClickListener(Film film);
     }
+
 
     public class ViewHolderFilm extends RecyclerView.ViewHolder {
         TextView name;
@@ -43,6 +37,14 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             backdrop = itemView.findViewById(R.id.ivBackDrop);
             btnPlay = itemView.findViewById(R.id.ivBtnPlay);
         }
+    }
+
+    List<Film> listFilm;
+    private OnSearchItemClickListener mListener;
+
+    public FilmSearchAdapter(List<Film> listFilms, OnSearchItemClickListener listener) {
+        this.listFilm = listFilms;
+        this.mListener = listener;
     }
 
     @NonNull
@@ -59,8 +61,9 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Film film = listFilm.get(position);
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
         ViewHolderFilm viewHolderFilm =(ViewHolderFilm) holder;
-        StorageReference backdropFilm = storageReference.child("films/"+ film.getBackdrop());
+        StorageReference backdropFilm = storageReference.child("images/backdrops/"+ film.getBackdrop());
         backdropFilm.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -68,12 +71,12 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         });
         viewHolderFilm.name.setText(film.getName());
-//        viewHolderFilm.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mListener.OnSearchItemClickListener(film);
-//            }
-//        });
+        viewHolderFilm.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.OnSearchItemClickListener(film);
+            }
+        });
     }
 
     @Override

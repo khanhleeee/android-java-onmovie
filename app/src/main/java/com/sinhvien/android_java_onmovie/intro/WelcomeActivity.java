@@ -1,14 +1,14 @@
-package com.sinhvien.android_java_onmovie;
+package com.sinhvien.android_java_onmovie.intro;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+
+import com.sinhvien.android_java_onmovie.R;
 
 import java.util.Timer;
 import java.util.TimerTask;

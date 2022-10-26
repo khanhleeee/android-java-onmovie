@@ -3,30 +3,27 @@ package com.sinhvien.android_java_onmovie;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.sinhvien.android_java_onmovie.model.Film;
 
 import java.util.ArrayList;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements FilmSearchAdapter.OnSearchItemClickListener {
 
     RecyclerView recyclerView;
     DatabaseReference databaseReference;
     FirebaseDatabase firebaseDatabase;
-    FilmAdapter filmAdapter;
+    FilmSearchAdapter filmSearchAdapter;
     ArrayList<Film> listFilm;
 
 
@@ -42,8 +39,8 @@ public class SearchActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.searchRecyclerView);
 
 
-        filmAdapter = new FilmAdapter(listFilm);
-        recyclerView.setAdapter(filmAdapter);
+        filmSearchAdapter = new FilmSearchAdapter(listFilm,this);
+        recyclerView.setAdapter(filmSearchAdapter);
 
 
 
@@ -68,7 +65,7 @@ public class SearchActivity extends AppCompatActivity {
                     Film film = dataSnapshot.getValue(Film.class);
                         listFilm.add(film);
                 }
-                filmAdapter.notifyDataSetChanged();
+                filmSearchAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -80,4 +77,8 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void OnSearchItemClickListener(Film film) {
+
+    }
 }

@@ -11,9 +11,12 @@
         <!-- colors for button styles -->
         <color name="background">#111111</color>
 
-        <!-- colors for button styles -->
+        <!-- colors for main styles -->
         <color name="gradient_start_color">#e10c7d</color>
         <color name="gradient_end_color">#2b25f6</color>
+
+        <!-- colors for menu & sub items styles -->
+        <color name="gray">#242424</color>
 
         <!-- colors for tab & screen text -->
         <color name="intro_title_color">#EFEFEF</color>
