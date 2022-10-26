@@ -1,11 +1,10 @@
-package com.sinhvien.android_java_onmovie;
+package com.sinhvien.android_java_onmovie.authentic;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.sinhvien.android_java_onmovie.MainActivity;
+import com.sinhvien.android_java_onmovie.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -57,17 +57,17 @@ public class SignInActivity extends AppCompatActivity {
                 String email = etEmail.getText().toString().trim();
                 String pass = etPass.getText().toString().trim();
 
-                if(email.isEmpty() || pass.isEmpty()){
-                    Toast.makeText(SignInActivity.this, "Please enter all information !", Toast.LENGTH_SHORT).show();
-                }
-                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                    Toast.makeText(SignInActivity.this, "Please enter the correct email format.!", Toast.LENGTH_SHORT).show();
-                }
-//                else if(!isValidPassword(pass)) {
-//                    Toast.makeText(SignInActivity.this, "Password must be more than 6 characters " +
-//                            "(a-z, A-Z, number, special characters)!", Toast.LENGTH_SHORT).show();
+//                if(email.isEmpty() || pass.isEmpty()){
+//                    Toast.makeText(SignInActivity.this, "Please enter all information !", Toast.LENGTH_SHORT).show();
 //                }
-                else {
+//                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+//                    Toast.makeText(SignInActivity.this, "Please enter the correct email format.!", Toast.LENGTH_SHORT).show();
+//                }
+////                else if(!isValidPassword(pass)) {
+////                    Toast.makeText(SignInActivity.this, "Password must be more than 6 characters " +
+////                            "(a-z, A-Z, number, special characters)!", Toast.LENGTH_SHORT).show();
+////                }
+//                else {
                     Toast.makeText(SignInActivity.this, "OK", Toast.LENGTH_SHORT).show();
                     mAuth = FirebaseAuth.getInstance();
                     mAuth.signInWithEmailAndPassword("ngannguyen@gmail.com", "123456")
@@ -88,7 +88,7 @@ public class SignInActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                }
+//                }
             }
         });
     }

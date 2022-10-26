@@ -1,19 +1,13 @@
-package com.sinhvien.android_java_onmovie;
-
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
+package com.sinhvien.android_java_onmovie.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import java.util.List;
+import com.sinhvien.android_java_onmovie.intro.OneIntroFragment;
+import com.sinhvien.android_java_onmovie.intro.ThreeIntroFragment;
+import com.sinhvien.android_java_onmovie.intro.TwoIntroFragment;
 
 public class IntroViewPagerAdapter extends FragmentStateAdapter {
     public IntroViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
