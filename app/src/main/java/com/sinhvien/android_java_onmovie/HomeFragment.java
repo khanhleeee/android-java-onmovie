@@ -1,5 +1,6 @@
 package com.sinhvien.android_java_onmovie;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -178,6 +179,16 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
     @Override
     public void OnFilmItemCLickListener(Film film) {
+        Bundle bundle = new Bundle();
 
+        bundle.putString("backdrop", film.getBackdrop());
+        bundle.putString("name", film.getName());
+        bundle.putString("country", film.getCountry());
+        bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
+        bundle.putString("desc", film.getDesc());
+
+        Intent intent = new Intent(getContext(), MovieDetail.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

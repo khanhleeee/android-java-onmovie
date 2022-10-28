@@ -27,8 +27,8 @@
 
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 app:cardCornerRadius="10dp">
@@ -36,7 +36,7 @@
                 <ImageView
                     android:id="@+id/backdrop_img"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="match_parent"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/backdropavatar" />
 
