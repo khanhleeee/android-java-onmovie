@@ -3,52 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/bg_input.xml" value="0.2555" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/bg_primary_btn.xml" value="0.2555" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/frame.xml" value="0.2545" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2555" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/season_btn_bg.xml" value="0.2545" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/season_btn_grey.xml" value="0.2545" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_detail.xml" value="0.25" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_intro.xml" value="0.129981884057971" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_movie_detail.xml" value="0.264" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_nick_name.xml" value="0.264" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_nick_name.xml" value="0.25" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_three_intro.xml" value="0.25" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_two_intro.xml" value="0.25" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/bg_grayborder.xml" value="0.156" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/bg_input.xml" value="0.1885" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/bg_overlay.xml" value="0.288" />
-
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/bg_primary_btn.xml" value="0.335" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/btn_primary.xml" value="0.206" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2795" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/indicator_default.xml" value="0.335" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/indicator_selected.xml" value="0.335" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/indicator_selector.xml" value="0.335" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/test.xml" value="0.156" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/drawable/user_avatar.xml" value="0.161" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/activity_intro.xml" value="0.2708333333333333" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/activity_sign_in.xml" value="0.2" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/activity_sign_up.xml" value="0.2947916666666667" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/activity_welcome.xml" value="0.2947916666666667" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_home.xml" value="0.2" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_movies.xml" value="0.21195652173913043" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_nick_name.xml" value="0.2947916666666667" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_one_intro.xml" value="0.2708333333333333" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_sign_up.xml" value="0.5" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_slider.xml" value="0.1" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_three_intro.xml" value="0.2390625" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_two_intro.xml" value="0.25625" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_user.xml" value="0.21195652173913043" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/layout_screen.xml" value="0.2222222222222222" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/layout_slider.xml" value="0.24912280701754386" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/overlay_bg.xml" value="0.29791666666666666" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/row_film_card.xml" value="0.264" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/activity_main.xml" value="0.33177083333333335" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/bg_btnplay.xml" value="0.2065" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/bg_input.xml" value="0.2105" />
@@ -56,16 +10,21 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/bg_primary_btn.xml" value="0.182" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/bg_shape_imgsearch.xml" value="0.2105" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/circle_button.xml" value="0.2065" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/indicator_selected.xml" value="0.1" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_intro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_movie_detail.xml" value="0.22" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_nick_name.xml" value="0.19010416666666666" />
-        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_search.xml" value="0.25" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_search.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_sign_in.xml" value="0.5" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_welcome.xml" value="0.22" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_one_intro.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_three_intro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_two_intro.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/layout_slider.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/row_film_card.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/row_search_film.xml" value="0.33" />
       </map>
     </option>

@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -45,6 +46,8 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
     FirebaseDatabase firebaseBD;
     DatabaseReference mDB;
+
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -83,6 +86,8 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
 
         viewPager2Slider = view.findViewById(R.id.slide_pager);
         sliderItems = new ArrayList<>();
