@@ -51,6 +51,9 @@ dependencies {
 
     implementation "androidx.cardview:cardview:1.0.0"
 
+    //firebase UI
+    implementation 'com.firebaseui:firebase-ui-database:8.0.2'
+
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.8'
 

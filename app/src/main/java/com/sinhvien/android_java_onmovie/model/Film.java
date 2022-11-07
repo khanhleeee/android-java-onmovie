@@ -10,16 +10,11 @@ public class Film implements Comparable<Film>, Serializable {
     // Comparable<> so sánh, sắp xếp theo thứ tự
 
     String id, name, backdrop, poster, country, desc;
-    List<String> film_casts, film_genres, trailers, videos;
+    List<String> film_casts, film_genres, keyword, trailers, videos;
     int limitedAge;
 
     public Film() {
     }
-
-
-
-
-
 
     @Override
     public String toString() {
@@ -32,11 +27,14 @@ public class Film implements Comparable<Film>, Serializable {
                 ", desc='" + desc + '\'' +
                 ", film_casts=" + film_casts +
                 ", film_genres=" + film_genres +
+                ", keyword=" + keyword +
                 ", trailers=" + trailers +
                 ", videos=" + videos +
                 ", limitedAge=" + limitedAge +
                 '}';
     }
+
+
 
     public void setId(String id) {
         this.id = id;
@@ -124,6 +122,14 @@ public class Film implements Comparable<Film>, Serializable {
 
     public int getLimitedAge() {
         return limitedAge;
+    }
+
+    public List<String> getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(List<String> keyword) {
+        this.keyword = keyword;
     }
 
     @Override
