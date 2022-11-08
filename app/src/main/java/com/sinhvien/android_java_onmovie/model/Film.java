@@ -11,14 +11,42 @@ public class Film implements Comparable<Film>, Serializable {
 
     String id, name, backdrop, poster, country, desc;
     List<String> film_casts, film_genres, trailers, videos;
-    int limitedAge;
+    int limitedAge, month, year;
 
     public Film() {
     }
 
+    public Film(String id, String name, String backdrop, String poster, String country, String desc, List<String> film_casts, List<String> film_genres, List<String> trailers, List<String> videos, int limitedAge, int month, int year) {
+        this.id = id;
+        this.name = name;
+        this.backdrop = backdrop;
+        this.poster = poster;
+        this.country = country;
+        this.desc = desc;
+        this.film_casts = film_casts;
+        this.film_genres = film_genres;
+        this.trailers = trailers;
+        this.videos = videos;
+        this.limitedAge = limitedAge;
+        this.month = month;
+        this.year = year;
+    }
 
+    public int getMonth() {
+        return month;
+    }
 
+    public void setMonth(int month) {
+        this.month = month;
+    }
 
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
 
 
     @Override
@@ -35,6 +63,8 @@ public class Film implements Comparable<Film>, Serializable {
                 ", trailers=" + trailers +
                 ", videos=" + videos +
                 ", limitedAge=" + limitedAge +
+                ", month=" + month +
+                ", year=" + year +
                 '}';
     }
 
