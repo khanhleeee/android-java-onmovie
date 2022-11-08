@@ -28,9 +28,9 @@
             android:id="@+id/ic_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="20dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
             app:srcCompat="@drawable/ic_search" />
     </RelativeLayout>
 
@@ -43,24 +43,28 @@
         app:tabIndicatorColor="@color/gradient_start_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:tabTextColor="@color/white"
+        app:tabIconTint="@color/change_color_menu"
         app:tabSelectedTextColor="@color/gradient_start_color"
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:icon="@drawable/ic_home"
             android:text="Trang Chủ" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:icon="@drawable/ic_film"
             android:text="Phim" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cá nhân" />
+            android:icon="@drawable/ic_user"
+            android:text="Cá nhân"
+            />
     </com.google.android.material.tabs.TabLayout>
 
     <FrameLayout

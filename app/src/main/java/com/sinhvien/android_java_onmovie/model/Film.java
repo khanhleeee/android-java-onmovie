@@ -48,7 +48,6 @@ public class Film implements Comparable<Film>, Serializable {
         this.year = year;
     }
 
-
     @Override
     public String toString() {
         return "Film{" +
@@ -60,6 +59,7 @@ public class Film implements Comparable<Film>, Serializable {
                 ", desc='" + desc + '\'' +
                 ", film_casts=" + film_casts +
                 ", film_genres=" + film_genres +
+                ", keyword=" + keyword +
                 ", trailers=" + trailers +
                 ", videos=" + videos +
                 ", limitedAge=" + limitedAge +
@@ -67,6 +67,8 @@ public class Film implements Comparable<Film>, Serializable {
                 ", year=" + year +
                 '}';
     }
+
+
 
     public void setId(String id) {
         this.id = id;
@@ -154,6 +156,14 @@ public class Film implements Comparable<Film>, Serializable {
 
     public int getLimitedAge() {
         return limitedAge;
+    }
+
+    public List<String> getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(List<String> keyword) {
+        this.keyword = keyword;
     }
 
     @Override
