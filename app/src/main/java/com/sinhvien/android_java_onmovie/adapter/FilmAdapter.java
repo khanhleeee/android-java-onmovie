@@ -71,7 +71,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         if(TYPE_LAYOUT == 1) {
             ViewHolderFilmCard viewHolder = (ViewHolderFilmCard) holder;
-            StorageReference sliderRef = storageReference.child("images/backdrops/" + film.getBackdrop());
+            StorageReference sliderRef = storageReference.child("images/posters/" + film.getBackdrop());
 
             sliderRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
@@ -80,7 +80,6 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             });
             viewHolder.name.setText(film.getName());
-
 
             viewHolder.itemView.setOnClickListener(view -> {
                 mListener.OnFilmItemCLickListener(film);
