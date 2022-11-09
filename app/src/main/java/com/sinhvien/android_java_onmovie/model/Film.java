@@ -59,7 +59,6 @@ public class Film implements Comparable<Film>, Serializable {
                 ", desc='" + desc + '\'' +
                 ", film_casts=" + film_casts +
                 ", film_genres=" + film_genres +
-                ", keyword=" + keyword +
                 ", trailers=" + trailers +
                 ", videos=" + videos +
                 ", limitedAge=" + limitedAge +
@@ -156,14 +155,6 @@ public class Film implements Comparable<Film>, Serializable {
 
     public int getLimitedAge() {
         return limitedAge;
-    }
-
-    public List<String> getKeyword() {
-        return keyword;
-    }
-
-    public void setKeyword(List<String> keyword) {
-        this.keyword = keyword;
     }
 
     @Override

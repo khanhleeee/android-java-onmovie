@@ -20,19 +20,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.sinhvien.android_java_onmovie.authentic.SignInActivity;
-import com.sinhvien.android_java_onmovie.intro.IntroActivity;
 import com.sinhvien.android_java_onmovie.model.Film;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 
@@ -97,7 +93,6 @@ public class SearchActivity extends AppCompatActivity implements FilmSearchAdapt
                             listFilmSearch.clear();
                             for (int i = 0; i < listFilm.size(); i++) {
                                 String nameFilm = listFilm.get(i).getName();
-                                ArrayList listKeyWord = (ArrayList) listFilm.get(i).getKeyword();
 
                                 String lowerName = nameFilm.toLowerCase(Locale.ROOT);
                                 String lowerInput = valueSearch.toLowerCase(Locale.ROOT);

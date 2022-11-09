@@ -261,6 +261,13 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
         bundle.putString("desc", film.getDesc());
 
+        ArrayList videos = new ArrayList(film.getVideos());
+        bundle.putStringArrayList("videos", videos);
+
+        ArrayList genres = new ArrayList(film.getFilm_genres());
+        bundle.putStringArrayList("genres", genres);
+
+
         Intent intent = new Intent(getContext(), MovieDetail.class);
         intent.putExtras(bundle);
         startActivity(intent);
