@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -22,10 +24,19 @@ import java.util.List;
 
 public class FilmSearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+
+
     public interface OnSearchItemClickListener {
         void OnSearchItemClickListener(Film film);
     }
 
+    public List<Film> getListFilm() {
+        return listFilm;
+    }
+
+    public void setListFilm(List<Film> listFilm) {
+        this.listFilm = listFilm;
+    }
 
     public class ViewHolderFilm extends RecyclerView.ViewHolder {
         TextView name;
@@ -84,7 +95,5 @@ public class FilmSearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 //        return (listFilm == null) ? 0 : listFilm.size();
         return listFilm.size();
     }
-
-
 
 }

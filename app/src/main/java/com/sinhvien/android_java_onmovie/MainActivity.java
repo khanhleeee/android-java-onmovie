@@ -10,9 +10,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -32,12 +35,19 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     TabLayout menuTablayout;
-
+    ImageView ic_search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        ic_search = findViewById(R.id.ic_search);
+        ic_search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentToSearchActivity = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(intentToSearchActivity);
+            }
+        });
         menuTablayout = findViewById(R.id.main_tabLayout);
         setFragment(0);
         menuTablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

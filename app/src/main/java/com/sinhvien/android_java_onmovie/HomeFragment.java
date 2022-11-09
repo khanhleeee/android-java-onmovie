@@ -1,19 +1,22 @@
 package com.sinhvien.android_java_onmovie;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
@@ -22,11 +25,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.sinhvien.android_java_onmovie.adapter.FilmAdapter;
 import com.sinhvien.android_java_onmovie.adapter.SliderViewPagerAdapter;
 import com.sinhvien.android_java_onmovie.model.Film;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,13 +43,21 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
     RecyclerView rvMonthlyFilm;
     RecyclerView rvActionFilm;
+    RecyclerView rvNoNameFilm;
+
     FilmAdapter adapterMonthlyFilm;
+    FilmAdapter adapterActionFilm;
+    FilmAdapter adapterNoNameFilm;
 
     List<Film> sliderItems;
-    List<Film> monthlyFilms;
+    List<Film> yearlyFilms;
+    List<Film> actionFilms;
+    List<Film> animationFilms;
 
     FirebaseDatabase firebaseBD;
     DatabaseReference mDB;
+
+
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -84,6 +97,9 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        firebaseBD = FirebaseDatabase.getInstance();
+        mDB = firebaseBD.getReference();
+
         viewPager2Slider = view.findViewById(R.id.slide_pager);
         sliderItems = new ArrayList<>();
 
@@ -93,28 +109,39 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         adapter = new SliderViewPagerAdapter(sliderItems, getContext());
         viewPager2Slider.setAdapter(adapter);
 
-
         // Sliders tablayout
         tabLayout = view.findViewById(R.id.slider_tabLayout);
         setTabLayout();
 
-        rvMonthlyFilm = view.findViewById(R.id.rvMonthlyFilms);
-        monthlyFilms = new ArrayList<>();
-
+        rvMonthlyFilm = view.findViewById(R.id.rvYearlyFilm);
         rvActionFilm = view.findViewById(R.id.rvActionFilms);
+        rvNoNameFilm = view.findViewById(R.id.rvAnimation);
+        yearlyFilms = new ArrayList<>();
+        actionFilms = new ArrayList<>();
+        animationFilms = new ArrayList<>();
 
-        // load monthly films
+
+        // load action films
+        loadActionFilms();
         loadMonthlyFilms();
+        loadNoFilms();
 
-        adapterMonthlyFilm = new FilmAdapter(monthlyFilms, this, 1);
+        adapterMonthlyFilm = new FilmAdapter(yearlyFilms, this, 1);
+        adapterActionFilm = new FilmAdapter(actionFilms, this, 1);
+        adapterNoNameFilm = new FilmAdapter(animationFilms, this, 1);
+
         rvMonthlyFilm.setAdapter(adapterMonthlyFilm);
-        rvActionFilm.setAdapter(adapterMonthlyFilm);
+        rvActionFilm.setAdapter(adapterActionFilm);
+        rvNoNameFilm.setAdapter(adapterNoNameFilm);
 
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        rvMonthlyFilm.setLayoutManager(linearLayoutManager);
-        rvActionFilm.setLayoutManager(linearLayoutManager2);
+
+        LinearLayoutManager monthlyLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager actionLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager nonameLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        rvMonthlyFilm.setLayoutManager(monthlyLayout);
+        rvActionFilm.setLayoutManager(actionLayout);
+        rvNoNameFilm.setLayoutManager(nonameLayout);
     }
 
     // Methods
@@ -132,12 +159,12 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     }
 
     private void loadSlider() {
-        firebaseBD = FirebaseDatabase.getInstance();
-        mDB = firebaseBD.getReference();
+        Query query = mDB.child("films").orderByChild("year");
 
-        mDB.child("films").addValueEventListener(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("ME", "" + snapshot);
                 for(DataSnapshot itemFilm: snapshot.getChildren()) {
                     Film item = itemFilm.getValue(Film.class);
                     if(sliderItems.size() < 4) {
@@ -145,7 +172,30 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
                     }
                 }
                 adapter.notifyDataSetChanged();
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void loadActionFilms() {
+        mDB.child("films").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot itemFilm: snapshot.getChildren()) {
+                    Film item = itemFilm.getValue(Film.class);
+
+                    for(int i = 0; i < item.getFilm_genres().size(); i++) {
+                        String genre = item.getFilm_genres().get(i);
+                        if(genre.equals("hanhdong")) {
+                            actionFilms.add(item);
+                        }
+                    }
+                }
+                adapterActionFilm.notifyDataSetChanged();
             }
 
             @Override
@@ -156,15 +206,15 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     }
 
     private void loadMonthlyFilms() {
-        firebaseBD = FirebaseDatabase.getInstance();
-        mDB = firebaseBD.getReference();
-
         mDB.child("films").addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot itemFilm: snapshot.getChildren()) {
                     Film item = itemFilm.getValue(Film.class);
-                    monthlyFilms.add(item);
+                    if(item.getYear() == Year.now().getValue()) {
+                        yearlyFilms.add(item);
+                    }
                 }
                 adapterMonthlyFilm.notifyDataSetChanged();
             }
@@ -176,6 +226,30 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         });
     }
 
+    private void loadNoFilms() {
+        mDB.child("films").addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot itemFilm: snapshot.getChildren()) {
+                    Film item = itemFilm.getValue(Film.class);
+                    for(int i = 0; i < item.getFilm_genres().size(); i++) {
+                        String genre = item.getFilm_genres().get(i);
+                        if(genre.equals("hoathinh")) {
+                            animationFilms.add(item);
+                        }
+                    }
+
+                }
+                adapterNoNameFilm.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     @Override
     public void OnFilmItemCLickListener(Film film) {
@@ -186,6 +260,13 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         bundle.putString("country", film.getCountry());
         bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
         bundle.putString("desc", film.getDesc());
+
+        ArrayList videos = new ArrayList(film.getVideos());
+        bundle.putStringArrayList("videos", videos);
+
+        ArrayList genres = new ArrayList(film.getFilm_genres());
+        bundle.putStringArrayList("genres", genres);
+
 
         Intent intent = new Intent(getContext(), MovieDetail.class);
         intent.putExtras(bundle);
