@@ -1,12 +1,29 @@
 package com.sinhvien.android_java_onmovie;
 
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.sinhvien.android_java_onmovie.model.User;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -14,6 +31,12 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class UserFragment extends Fragment {
+
+    FirebaseDatabase fDatabase;
+    FirebaseAuth fAuth;
+
+    public TextView tvNickName, tvEmail;
+    public ImageView imgAvatar;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,5 +83,30 @@ public class UserFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user, container, false);
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        tvNickName = view.findViewById(R.id.tvNickName);
+        tvEmail = view.findViewById(R.id.tvEmail);
+        imgAvatar = view.findViewById(R.id.imgAvatar);
+
+        fDatabase = FirebaseDatabase.getInstance();
+        fAuth = FirebaseAuth.getInstance();
+
+
+        this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            public void onDataChange(DataSnapshot snapshot) {
+                User user = snapshot.getValue(User.class);
+                tvNickName.setText(user.getNickname());
+                tvEmail.setText(user.getEmail());
+            }
+
+            public void onCancelled(DatabaseError error) {
+            }
+        });
     }
 }
