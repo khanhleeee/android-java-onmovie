@@ -66,6 +66,7 @@ public class NickNameActivity extends AppCompatActivity {
                                 user.put("password",password);
                                 user.put("nickname",nickname);
 
+
                                 databaseReference.child("users").child(userID).setValue(user)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override

@@ -255,6 +255,7 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     public void OnFilmItemCLickListener(Film film) {
         Bundle bundle = new Bundle();
 
+        bundle.putString("id", film.getId());
         bundle.putString("backdrop", film.getBackdrop());
         bundle.putString("name", film.getName());
         bundle.putString("country", film.getCountry());

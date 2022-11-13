@@ -12,7 +12,9 @@
         android:background="@drawable/season_btn_bg"
         android:text="Button"
         android:textColor="@color/white"
-        android:textSize="8dp"
+        android:textSize="10dp"
+
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
