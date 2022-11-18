@@ -31,6 +31,8 @@ import com.sinhvien.android_java_onmovie.adapter.FilmAdapter;
 import com.sinhvien.android_java_onmovie.adapter.SliderViewPagerAdapter;
 import com.sinhvien.android_java_onmovie.model.Film;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
@@ -268,6 +270,8 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
 
+        ArrayList film_casts = new ArrayList(film.getFilm_casts());
+        bundle.putStringArrayList("cast", film_casts);
 
         Intent intent = new Intent(getContext(), MovieDetail.class);
         intent.putExtras(bundle);

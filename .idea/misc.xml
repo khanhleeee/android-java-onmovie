@@ -12,6 +12,7 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/circle_button.xml" value="0.2065" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/ic_search.xml" value="0.1305" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/indicator_selected.xml" value="0.1" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/shape_circle_cast.xml" value="0.1745" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/drawable/style_text_tablayout.xml" value="0.1765" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_intro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -21,15 +22,21 @@
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_sign_in.xml" value="0.5" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/activity_welcome.xml" value="0.22" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_cast.xml" value="0.25" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_filter.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_home.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_one_intro.xml" value="0.33" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_recommended_movie.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_three_intro.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_trailer.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/fragment_two_intro.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/layout_slider.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/row_cast.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/row_film_card.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/row_search_film.xml" value="0.33" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/row_trailer.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/season_item.xml" value="0.5" />
+        <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/layout/shape_circle_cast.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/PC/AndroidStudioProjects/android-java-onmovie/app/src/main/res/menu/main_search.xml" value="0.20416666666666666" />
       </map>
     </option>

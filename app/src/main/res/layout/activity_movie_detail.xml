@@ -272,37 +272,55 @@
                         android:textColor="@color/tab_indicate_gray"
                         android:textSize="14dp"
                         android:textStyle="bold" />
-                    <com.google.android.material.tabs.TabLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        app:tabTextColor="@color/white"
-                        android:background="@color/gray"
-                        app:tabIconTint="@color/change_color_menu"
-                        app:tabSelectedTextColor="@color/gradient_start_color"
-                        app:tabIndicatorColor="@color/gradient_start_color"
-                        app:layout_constraintBottom_toBottomOf="@+id/linearLayout2">
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Trailer">
 
-                        </com.google.android.material.tabs.TabItem>
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Diễn viên">
-
-                        </com.google.android.material.tabs.TabItem>
-                        <com.google.android.material.tabs.TabItem
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:text="Đề xuất">
-
-                        </com.google.android.material.tabs.TabItem>
-                    </com.google.android.material.tabs.TabLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/bottom_navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gray"
+                    app:tabIconTint="@color/change_color_menu"
+                    app:tabIndicatorColor="@color/gradient_start_color"
+                    app:tabSelectedTextColor="@color/gradient_start_color"
+                    app:tabTextColor="@color/white">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Trailer">
+
+                    </com.google.android.material.tabs.TabItem>
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Diễn viên">
+
+                    </com.google.android.material.tabs.TabItem>
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Đề xuất">
+
+                    </com.google.android.material.tabs.TabItem>
+                </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager_detail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/outline_search_color">
+
+            </androidx.viewpager2.widget.ViewPager2>
+
+
+
+
 
         </LinearLayout>
 

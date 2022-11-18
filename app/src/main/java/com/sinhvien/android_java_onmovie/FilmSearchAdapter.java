@@ -2,6 +2,7 @@ package com.sinhvien.android_java_onmovie;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +72,7 @@ public class FilmSearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Film film = listFilm.get(position);
+
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
         ViewHolderFilm viewHolderFilm =(ViewHolderFilm) holder;
