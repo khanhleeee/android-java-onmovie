@@ -26,7 +26,6 @@ public class FilterAdapter extends FragmentStateAdapter {
 
     ArrayList<Genre> genreList;
 
-
     public FilterAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, ArrayList genreList) {
         super(fragmentManager, lifecycle);
         this.genreList = genreList;
