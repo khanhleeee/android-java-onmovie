@@ -48,7 +48,6 @@
         <activity
             android:name=".intro.WelcomeActivity"
             android:exported="true">
-
         </activity>
         <activity
             android:name=".intro.IntroActivity"
@@ -60,7 +59,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true" >
-
 
         </activity>
     </application>
