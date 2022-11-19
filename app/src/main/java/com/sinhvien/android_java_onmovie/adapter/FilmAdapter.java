@@ -89,7 +89,8 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return films.size();
+        return films== null ? 0 :films.size();
+//        return films.size();
     }
 
 
