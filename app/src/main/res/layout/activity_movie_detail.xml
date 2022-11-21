@@ -13,6 +13,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
@@ -23,15 +24,13 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />
 
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                app:cardCornerRadius="10dp">
+                android:layout_height="230dp">
 
                 <ImageView
                     android:id="@+id/backdrop_img"
@@ -44,29 +43,44 @@
                     android:id="@+id/play_movie_img"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    app:srcCompat="@drawable/group138"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_play" />
 
             </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/tv_movie_name"
-                android:layout_marginTop="15dp"
-                android:textSize="23dp"
-                android:textStyle="bold"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Avatar 1"
-                android:layout_marginLeft="30dp"
-                android:textColor="#FFFFFF" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:id="@+id/tv_movie_name"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+
+                    android:text="Avatar 1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ic_addlist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="18dp"
+                    app:srcCompat="@drawable/ic_nonaddlist" />
+            </LinearLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_seasons"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="8dp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -76,17 +90,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/txtKeyOfYear"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="28dp"
                         android:text="Năm phát hành: "
                         android:textColor="@color/tab_indicate_gray"
-                        android:textStyle="bold"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtYear"
@@ -94,8 +109,8 @@
                         android:layout_height="wrap_content"
                         android:text="2020"
                         android:textColor="@color/tab_indicate_gray"
-                        android:textStyle="bold"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -109,17 +124,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/txtKeyOfCountries"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="28dp"
                         android:text="Quốc gia: "
                         android:textColor="@color/tab_indicate_gray"
-                        android:textStyle="bold"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_country"
@@ -127,8 +143,8 @@
                         android:layout_height="wrap_content"
                         android:text="Mỹ"
                         android:textColor="@color/tab_indicate_gray"
-                        android:textStyle="bold"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -142,26 +158,29 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/txtKeyOfGen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="28dp"
                         android:text="Thể loại: "
                         android:textColor="@color/tab_indicate_gray"
-                        android:textStyle="bold"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/txtGen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
                         android:text="Hành động, kịch tính, gây cấn"
                         android:textColor="@color/tab_indicate_gray"
-                        android:textStyle="bold"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -175,17 +194,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/txtKeyOfLimite"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="28dp"
                         android:text="Giới hạn: "
                         android:textColor="@color/tab_indicate_gray"
-                        android:textStyle="bold"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tv_content_limitedAge"
@@ -193,8 +213,8 @@
                         android:layout_height="wrap_content"
                         android:text="Trên 16 tuổi"
                         android:textColor="@color/tab_indicate_gray"
-                        android:textStyle="bold"
-                        android:textSize="15dp" />
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
@@ -207,14 +227,36 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="20dp"
+                    android:orientation="vertical">
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </TableLayout>
 
                     <TextView
                         android:id="@+id/txtContentTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="28dp"
                         android:text="Nội dung"
                         android:textColor="@color/white"
                         android:textSize="19dp"
@@ -225,18 +267,64 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:layout_marginLeft="28dp"
-                        android:layout_marginRight="28dp"
+                        android:justificationMode="inter_word"
+                        android:text="Sau khi tìm thấy cơ thể vật chủ trong tay phóng viên điều tra Eddie Brock, người ngoài hành tinh symbiote phải đối mặt với kẻ thù mới. Carnage, bản ngã thay thế của kẻ giết người hàng loạt Cletus Kasady."
                         android:textColor="@color/tab_indicate_gray"
                         android:textSize="14dp"
-                        android:textStyle="bold"
-                        android:text="Sau khi tìm thấy cơ thể vật chủ trong tay phóng viên điều tra Eddie Brock, người ngoài hành tinh symbiote phải đối mặt với kẻ thù mới. Carnage, bản ngã thay thế của kẻ giết người hàng loạt Cletus Kasady." />
-                </LinearLayout>
+                        android:textStyle="bold" />
 
+                </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/bottom_navigation"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/gray"
+                    app:tabIconTint="@color/change_color_menu"
+                    app:tabIndicatorColor="@color/gradient_start_color"
+                    app:tabSelectedTextColor="@color/gradient_start_color"
+                    app:tabTextColor="@color/white">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Trailer">
+
+                    </com.google.android.material.tabs.TabItem>
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Diễn viên">
+
+                    </com.google.android.material.tabs.TabItem>
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Đề xuất">
+
+                    </com.google.android.material.tabs.TabItem>
+                </com.google.android.material.tabs.TabLayout>
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewpager_detail"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/outline_search_color">
+
+            </androidx.viewpager2.widget.ViewPager2>
+
+
+
 
 
         </LinearLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

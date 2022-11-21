@@ -55,6 +55,7 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
 
         GERNE_ID = getArguments().getString("genre_id");
 
+
         tvName = view.findViewById(R.id.tvName);
         rvFilms = view.findViewById(R.id.rvFilms);
 

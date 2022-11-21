@@ -55,7 +55,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String email = etEmail.getText().toString().trim();
-                String pass = etPass.getText().toString().trim();
+                String password = etPass.getText().toString().trim();
 
 //                if(email.isEmpty() || pass.isEmpty()){
 //                    Toast.makeText(SignInActivity.this, "Please enter all information !", Toast.LENGTH_SHORT).show();

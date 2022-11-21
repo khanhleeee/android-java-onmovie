@@ -39,7 +39,7 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull SeasonAdapter.MyViewHolder holder, int position) {
-        holder.btn_season.setText("Phan" + String.valueOf(position + 1));
+        holder.btn_season.setText("Phần " + String.valueOf(position + 1));
     }
 
     @Override
