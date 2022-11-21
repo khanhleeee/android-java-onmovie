@@ -131,9 +131,8 @@ public class MovieDetail extends AppCompatActivity {
                         }
                     }
                 }
-                Log.d("hihi", "genre: " + f_genres_name);
+
                 for(int i = 0; i < f_genres_name.size(); i++) {
-                    Log.d("hihi2", "genre: " + f_genres_name.get(i));
                     if(i < f_genres_name.size() - 1) {
                         names += f_genres_name.get(i) + ", ";
                     } else {

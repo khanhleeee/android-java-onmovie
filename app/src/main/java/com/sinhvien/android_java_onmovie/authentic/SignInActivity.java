@@ -70,7 +70,7 @@ public class SignInActivity extends AppCompatActivity {
 //                else {
                     Toast.makeText(SignInActivity.this, "OK", Toast.LENGTH_SHORT).show();
                     mAuth = FirebaseAuth.getInstance();
-                    mAuth.signInWithEmailAndPassword("ngannguyen@gmail.com", "123456")
+                    mAuth.signInWithEmailAndPassword(email, pass)
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
