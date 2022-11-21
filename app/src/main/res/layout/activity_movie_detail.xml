@@ -313,8 +313,8 @@
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewpager_detail"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:background="@color/outline_search_color">
+                android:layout_height="match_parent"
+                >
 
             </androidx.viewpager2.widget.ViewPager2>
 

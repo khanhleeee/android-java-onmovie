@@ -1,6 +1,7 @@
 package com.sinhvien.android_java_onmovie;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -199,7 +200,27 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
     @Override
     public void OnFilmItemCLickListener(Film film) {
+        Bundle bundle = new Bundle();
 
+        bundle.putString("id", film.getId());
+        bundle.putString("backdrop", film.getBackdrop());
+        bundle.putString("name", film.getName());
+        bundle.putString("country", film.getCountry());
+        bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
+        bundle.putString("desc", film.getDesc());
+
+        ArrayList videos = new ArrayList(film.getVideos());
+        bundle.putStringArrayList("videos", videos);
+
+        ArrayList genres = new ArrayList(film.getFilm_genres());
+        bundle.putStringArrayList("genres", genres);
+
+        ArrayList film_casts = new ArrayList(film.getFilm_casts());
+        bundle.putStringArrayList("cast", film_casts);
+
+        Intent intent = new Intent(getContext(), MovieDetail.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
 
