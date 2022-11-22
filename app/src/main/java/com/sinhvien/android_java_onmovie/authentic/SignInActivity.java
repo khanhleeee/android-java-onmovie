@@ -49,8 +49,6 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-
-
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,9 +66,8 @@ public class SignInActivity extends AppCompatActivity {
 ////                            "(a-z, A-Z, number, special characters)!", Toast.LENGTH_SHORT).show();
 ////                }
 //                else {
-                    Toast.makeText(SignInActivity.this, "OK", Toast.LENGTH_SHORT).show();
                     mAuth = FirebaseAuth.getInstance();
-                    mAuth.signInWithEmailAndPassword(email, pass)
+                    mAuth.signInWithEmailAndPassword("ngoquoctu113113@gmail.com", "123456")
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {

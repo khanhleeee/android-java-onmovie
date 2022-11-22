@@ -21,18 +21,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.sinhvien.android_java_onmovie.adapter.CoutryTagAdapter;
 import com.sinhvien.android_java_onmovie.adapter.FilmAdapter;
+import com.sinhvien.android_java_onmovie.model.Country;
 import com.sinhvien.android_java_onmovie.model.Film;
-import com.sinhvien.android_java_onmovie.model.Genre;
 
 import java.util.ArrayList;
 
-public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCLickListener {
+public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCLickListener,
+        CoutryTagAdapter.OnCountryItemClickListener {
 
     TextView tvName;
     RecyclerView rvFilms;
+    RecyclerView rvCountry;
     FilmAdapter adapter;
+    CoutryTagAdapter coutryTagAdapter;
     ArrayList<Film> films;
+    ArrayList<Country> listCountry;
 
     FirebaseDatabase fDB;
     DatabaseReference mDB;
@@ -55,11 +60,12 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
 
         GERNE_ID = getArguments().getString("genre_id");
 
-
         tvName = view.findViewById(R.id.tvName);
         rvFilms = view.findViewById(R.id.rvFilms);
+        rvCountry = view.findViewById(R.id.rvTagCountry);
 
         films = new ArrayList();
+        listCountry = new ArrayList<>();
 
         fDB = FirebaseDatabase.getInstance();
         mDB = fDB.getReference();
@@ -76,8 +82,37 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
         rvFilms.setLayoutManager(gridLayoutManager);
 
+        loadAllCountries();
+
+        coutryTagAdapter = new CoutryTagAdapter(listCountry, this);
+        rvCountry.setAdapter(coutryTagAdapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        linearLayoutManager.setAutoMeasureEnabled(true);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        rvCountry.setLayoutManager(linearLayoutManager);
+
         tvName.setText(getArguments().getString("genre_name"));
 
+
+    }
+
+    private void loadAllCountries (){
+        mDB.child("countries").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot items: snapshot.getChildren()) {
+                    Country item = items.getValue(Country.class);
+                    listCountry.add(item);
+                }
+                coutryTagAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     private void loadAllFilms() {
@@ -126,5 +161,10 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
     @Override
     public void OnFilmItemCLickListener(Film film) {
         Toast.makeText(getContext(), film.getName(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void OnCountryItemClickListener(Country country) {
+        Toast.makeText(getContext(), country.getName(), Toast.LENGTH_SHORT).show();
     }
 }
