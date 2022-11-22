@@ -1,5 +1,6 @@
 package com.sinhvien.android_java_onmovie;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,40 +8,41 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sinhvien.android_java_onmovie.adapter.FilmAdapter;
-import com.sinhvien.android_java_onmovie.model.Cast;
 import com.sinhvien.android_java_onmovie.model.Film;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link RecommendedMovieFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecommendedMovieFragment extends Fragment implements FilmAdapter.OnFilmItemCLickListener{
+public class RecommendedMovieFragment extends Fragment
+        implements RecommendAdapter.OnRecommendItemClickListener{
 
     FirebaseDatabase fDB;
     DatabaseReference mDB;
 
     RecyclerView recyclerView;
-    FilmAdapter filmAdapter;
+    RecommendAdapter filmAdapter;
 
     ArrayList<Film> films;
     ArrayList genre;
+    String id;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -95,12 +97,13 @@ public class RecommendedMovieFragment extends Fragment implements FilmAdapter.On
 
         fDB = FirebaseDatabase.getInstance();
         mDB = fDB.getReference();
-
+        films = new ArrayList();
         Bundle bundle = getActivity().getIntent().getExtras();
         genre = bundle.getStringArrayList("genres");
+        id = bundle.getString("id");
 
         recyclerView= view.findViewById(R.id.rvRecommendFilm);
-        filmAdapter = new FilmAdapter(films, this, 1);
+        filmAdapter = new RecommendAdapter(films, this, 1);
         recyclerView.setAdapter(filmAdapter);
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
@@ -110,16 +113,14 @@ public class RecommendedMovieFragment extends Fragment implements FilmAdapter.On
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot item:snapshot.getChildren()){
-//                    ArrayList test = (ArrayList) item.child("film_genres").getValue();
                     Film film = item.getValue(Film.class);
                     for(int i=0; i< film.getFilm_genres().size(); i++){
                         String test = film.getFilm_genres().get(i);
-                        if(test.equals(genre)){
-                            films.add(film);
 
+                        if(genre.get(0).equals(test) && !film.getId().equals(id)){
+                            films.add(film);
                         }
                     }
-//                    Log.d("ABC", ": "+test);
                 }
                 filmAdapter.notifyDataSetChanged();
             }
@@ -133,7 +134,27 @@ public class RecommendedMovieFragment extends Fragment implements FilmAdapter.On
     }
 
     @Override
-    public void OnFilmItemCLickListener(Film film) {
+    public void OnRecommendItemClickListener(Film film) {
+        Bundle bundle = new Bundle();
 
+        bundle.putString("id", film.getId());
+        bundle.putString("backdrop", film.getBackdrop());
+        bundle.putString("name", film.getName());
+        bundle.putString("country", film.getCountry());
+        bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
+        bundle.putString("desc", film.getDesc());
+
+        ArrayList videos = new ArrayList(film.getVideos());
+        bundle.putStringArrayList("videos", videos);
+
+        ArrayList genres = new ArrayList(film.getFilm_genres());
+        bundle.putStringArrayList("genres", genres);
+
+        ArrayList film_casts = new ArrayList(film.getFilm_casts());
+        bundle.putStringArrayList("cast", film_casts);
+
+        Intent intent = new Intent(getContext(), MovieDetail.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

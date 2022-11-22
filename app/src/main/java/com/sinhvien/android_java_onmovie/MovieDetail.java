@@ -2,10 +2,10 @@ package com.sinhvien.android_java_onmovie;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,16 +26,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.sinhvien.android_java_onmovie.adapter.SeasonAdapter;
-import com.sinhvien.android_java_onmovie.authentic.SignInActivity;
 import com.sinhvien.android_java_onmovie.model.Country;
 import com.sinhvien.android_java_onmovie.model.Genre;
-import com.sinhvien.android_java_onmovie.model.WatchLists;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class MovieDetail extends AppCompatActivity {
 
@@ -46,21 +42,33 @@ public class MovieDetail extends AppCompatActivity {
     private RecyclerView rv_season;
 
     DatabaseReference mDB;
-    FirebaseDatabase fDatabase;
     FirebaseAuth fAuth;
 
-    ArrayList seasons, f_genres, f_genres_name, watch_lists, f_casts;
+    ArrayList f_genres, f_genres_name, watch_lists, f_casts;
 
-    ImageView backdrop_img, addlist;
+    ImageView backdrop_img, addlist, back;
     TextView tv_content_limitedAge, tv_country, tv_name, tv_content, tv_genres;
 
-    String id, name, backdrop, age, country, content, names = "", userID;
-    Boolean checkAdd = false;
+    String id, name, backdrop, age, country, content, userID, names = "";
+    Boolean checkAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_detail);
+
+        /* Lấy thông tin bundles từ trang home */
+        Bundle bundle = getIntent().getExtras();
+        id = bundle.getString("id");
+        backdrop  = bundle.getString("backdrop");
+        name  = bundle.getString("name");
+        age  = bundle.getString("limitedAge");
+        country  = bundle.getString("country");
+        content = bundle.getString("desc");
+        f_genres = bundle.getStringArrayList("genres");
+        f_casts = bundle.getStringArrayList("cast");
+
+        /* Khai báo các view items */
         viewPager2 = findViewById(R.id.viewpager_detail);
         tabLayout = findViewById(R.id.bottom_navigation);
 
@@ -71,90 +79,45 @@ public class MovieDetail extends AppCompatActivity {
         tv_content = findViewById(R.id.txtContent);
         tv_genres = findViewById(R.id.txtGen);
 
-        mDB = FirebaseDatabase.getInstance().getReference();
-        Map<String,Object> film = new HashMap<>();
-        fAuth = FirebaseAuth.getInstance();
-        userID = fAuth.getCurrentUser().getUid();
-
-//        image add list film
-        addlist = findViewById(R.id.ic_addlist);
-        if(checkAdd = true){
-        addlist.setOnClickListener(new View.OnClickListener() {
+        /* Set nút back */
+        back = findViewById(R.id.back_img);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addlist.setImageResource(R.drawable.ic_addlist);
-                mDB.child("users").child(userID).child("watch_lists").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        if(watch_lists.contains(id)){
-                            Toast.makeText(MovieDetail.this, "Phim đã được thêm vào danh sách!!!", Toast.LENGTH_SHORT).show();
-
-                        }
-                        else{
-                            int size = (int) snapshot.getChildrenCount();
-                            String key = String.valueOf(size+1);
-                            Map<String,Object> listFilm = new HashMap<>();
-                            listFilm.put(key,id);
-
-                            mDB.child("users").child(userID).child("watch_lists").updateChildren(listFilm);
-                            checkAdd = false;
-                            Toast.makeText(MovieDetail.this, "Thêm thành công!!!", Toast.LENGTH_SHORT).show();
-//                        Log.d("TAG", ": "+size);
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-        });
-        }
-        else {
-            Toast.makeText(MovieDetail.this, "Đã thêm vào danh sách trước đó!!!", Toast.LENGTH_SHORT).show();
-        }
-
-        rv_season = findViewById(R.id.rv_seasons);
-
-        Bundle bundle = getIntent().getExtras();
-        id = bundle.getString("id");
-        backdrop  = bundle.getString("backdrop");
-        name  = bundle.getString("name");
-        age  = bundle.getString("limitedAge");
-        country  = bundle.getString("country");
-        content = bundle.getString("desc");
-        seasons = bundle.getStringArrayList("videos");
-        f_genres = bundle.getStringArrayList("genres");
-        f_casts = bundle.getStringArrayList("cast");
-
-        f_genres_name = new ArrayList();
-
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
-
-        seasonAdapter = new SeasonAdapter(seasons);
-        rv_season.setAdapter(seasonAdapter);
-        rv_season.setLayoutManager(layoutManager);
-
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference backdropFilm = storageReference.child("images/backdrops/"+ backdrop);
-
-        backdropFilm.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(backdrop_img);
+                Intent intent = new Intent(MovieDetail.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
-        tv_name.setText(name);
-        tv_content_limitedAge.setText(age);
-        tv_content.setText(content);
-        loadCountries();
-        loadGenres();
-        checkAddFilm();
+        /* Xử lý nút thêm vào danh sách yêu thích */
+        fAuth = FirebaseAuth.getInstance();
+        userID = fAuth.getCurrentUser().getUid();
+        mDB = FirebaseDatabase.getInstance().getReference();
+
+        addlist = findViewById(R.id.ic_addlist);
+
+        // Set onclick add to movie list
+        addlist.setOnClickListener(view -> {
+            if(checkAdd.equals(true)) {
+                for(int i = 0; i < watch_lists.size(); i++) {
+                    if(watch_lists.get(i).equals(id)) {
+                       watch_lists.remove(i);
+                    }
+                }
+                mDB.child("users").child(userID).child("watch_lists").setValue(watch_lists);
+                Log.d("XXX", "" + convertArrayListToHashMap(watch_lists));
+                Toast.makeText(this, "Xoa", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                watch_lists.add(id);
+                mDB.child("users").child(userID).child("watch_lists").updateChildren(convertArrayListToHashMap(watch_lists));
+                Toast.makeText(this, "Them", Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
+        setInformation();
+
 
         DetailAdapter detailAdapter = new DetailAdapter(this);
         viewPager2.setAdapter(detailAdapter);
@@ -181,17 +144,24 @@ public class MovieDetail extends AppCompatActivity {
         mDB.child("users").child(userID).child("watch_lists").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList listFilm = (ArrayList) snapshot.getValue();
-                watch_lists = listFilm;
+                Log.d("CCC", "" + snapshot);
+                if(snapshot.getValue() == null) {
+                    checkAdd = false;
+                    watch_lists = new ArrayList();
+                } else {
+                    ArrayList listFilm = (ArrayList) snapshot.getValue();
+                    watch_lists = new ArrayList(listFilm);
+
                     if(listFilm.contains(id)){
                         addlist.setImageResource(R.drawable.ic_addlist);
-                        checkAdd = false;
+                        checkAdd = true;
                     }
                     else {
                         addlist.setImageResource(R.drawable.ic_nonaddlist);
-                        checkAdd = true;
+                        checkAdd = false;
                     }
-//                Log.d("XYZ", "" + listFilm);
+                }
+
             }
 
             @Override
@@ -221,7 +191,7 @@ public class MovieDetail extends AppCompatActivity {
     }
 
     private void loadGenres() {
-
+        f_genres_name = new ArrayList();
         mDB = FirebaseDatabase.getInstance().getReference();
         mDB.child("genres").addValueEventListener(new ValueEventListener() {
             @Override
@@ -235,9 +205,7 @@ public class MovieDetail extends AppCompatActivity {
                         }
                     }
                 }
-//                Log.d("hihi", "genre: " + f_genres_name);
                 for(int i = 0; i < f_genres_name.size(); i++) {
-//                    Log.d("hihi2", "genre: " + f_genres_name.get(i));
                     if(i < f_genres_name.size() - 1) {
                         names += f_genres_name.get(i) + ", ";
                     } else {
@@ -251,6 +219,40 @@ public class MovieDetail extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+    }
+
+    private void setInformation() {
+        /* Set texts */
+        tv_name.setText(name);
+        tv_content_limitedAge.setText(age);
+        tv_content.setText(content);
+
+        /* Set backdrop */
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference backdropFilm = storageReference.child("images/backdrops/"+ backdrop);
+        backdropFilm.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(backdrop_img);
+            }
+        });
+
+        /* Load rest informations */
+        loadCountries();
+        loadGenres();
+        checkAddFilm();
+    }
+
+    private static HashMap<String, String>
+    convertArrayListToHashMap(ArrayList<String> arrayList)
+    {
+        HashMap<String, String> hashMap = new HashMap<>();
+
+        for(int i = 0; i < arrayList.size(); i++) {
+            hashMap.put(String.valueOf(i), arrayList.get(i));
+        }
+
+        return hashMap;
     }
 
 }
