@@ -20,22 +20,22 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/black"
+            app:cardBackgroundColor="@color/background"
             app:cardCornerRadius="50dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="Hồ sơ"
-                    android:textColor="@color/white"
-                    android:textSize="21dp"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView10"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="30dp"-->
+<!--                    android:text="Hồ sơ"-->
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="21dp"-->
+<!--                    android:textStyle="bold" />-->
 
                 <ImageView
                     android:id="@+id/imgSetting"
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:cardBackgroundColor="@color/black"
+            app:cardBackgroundColor="@color/background"
             app:cardCornerRadius="50dp">
 
             <LinearLayout
@@ -103,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:cardBackgroundColor="@color/black"
+            app:cardBackgroundColor="@color/background"
             app:cardCornerRadius="50dp">
 
             <TextView
@@ -121,7 +121,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            app:cardBackgroundColor="@color/black">
+            app:cardBackgroundColor="@color/background">
 
             <RelativeLayout
                 android:layout_width="match_parent"

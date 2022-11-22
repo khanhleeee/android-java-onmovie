@@ -1,6 +1,7 @@
 package com.sinhvien.android_java_onmovie;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -50,6 +51,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     public TextView tvNickName, tvEmail, textView;
     public ImageView imgAvatar, imgEdit;
     public EditText edtNickname;
+    public ImageView imgSetting;
 
     public RecyclerView rvWatchList;
 
@@ -119,6 +121,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         imgEdit = view.findViewById(R.id.imgEdit);
         edtNickname = view.findViewById(R.id.edtNickname);
         textView =  view.findViewById(R.id.textView11);
+        imgSetting = view.findViewById(R.id.imgSetting);
 
         rvWatchList = view.findViewById(R.id.rvWatchList);
 
@@ -149,8 +152,8 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         });
 
         loadWatchList();
-//        loadAllFilms();
         UpdateUser();
+        ShowDialogSetting();
     }
 
     private void loadWatchList() {
@@ -197,9 +200,37 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         });
     }
 
+    public void ShowDialogSetting(){
+
+        imgSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SettingUserDialogFragment dialog = new SettingUserDialogFragment();
+                dialog.show(getActivity().getSupportFragmentManager(), "dialog_setting_user");
+            }
+        });
+    }
+
     @Override
     public void OnFilmItemCLickListener(Film film) {
+        Bundle bundle = new Bundle();
 
+        bundle.putString("backdrop", film.getBackdrop());
+        bundle.putString("name", film.getName());
+        bundle.putString("country", film.getCountry());
+        bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
+        bundle.putString("desc", film.getDesc());
+
+        ArrayList videos = new ArrayList(film.getVideos());
+        bundle.putStringArrayList("videos", videos);
+
+        ArrayList genres = new ArrayList(film.getFilm_genres());
+        bundle.putStringArrayList("genres", genres);
+
+
+        Intent intent = new Intent(getContext(), MovieDetail.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
 
