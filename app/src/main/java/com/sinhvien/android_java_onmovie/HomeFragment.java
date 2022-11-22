@@ -136,11 +136,10 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         rvActionFilm.setAdapter(adapterActionFilm);
         rvNoNameFilm.setAdapter(adapterNoNameFilm);
 
-
-
         LinearLayoutManager monthlyLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         LinearLayoutManager actionLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         LinearLayoutManager nonameLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
         rvMonthlyFilm.setLayoutManager(monthlyLayout);
         rvActionFilm.setLayoutManager(actionLayout);
         rvNoNameFilm.setLayoutManager(nonameLayout);
@@ -166,7 +165,6 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("ME", "" + snapshot);
                 for(DataSnapshot itemFilm: snapshot.getChildren()) {
                     Film item = itemFilm.getValue(Film.class);
                     if(sliderItems.size() < 4) {

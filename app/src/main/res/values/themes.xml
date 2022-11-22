@@ -14,16 +14,19 @@
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/montserrat_regular</item>
     </style>
+
     <style name="Theme.Android_Java_onMovie.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="CustomTabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">14sp</item>
         <item name="textAllCaps">false</item>
         <item name="android:textAllCaps">false</item>
     </style>
-    <style name="Theme.Android_Java_onMovie.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Android_Java_onMovie.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.Android_Java_onMovie.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
