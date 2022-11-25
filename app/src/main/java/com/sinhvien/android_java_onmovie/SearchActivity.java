@@ -154,68 +154,27 @@ public class SearchActivity extends AppCompatActivity implements FilmSearchAdapt
 
     @Override
     public void OnSearchItemClickListener(Film film) {
+        Bundle bundle = new Bundle();
 
+        bundle.putString("id", film.getId());
+        bundle.putString("backdrop", film.getBackdrop());
+        bundle.putString("name", film.getName());
+        bundle.putString("country", film.getCountry());
+        bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
+        bundle.putString("desc", film.getDesc());
+
+        ArrayList videos = new ArrayList(film.getVideos());
+        bundle.putStringArrayList("videos", videos);
+
+        ArrayList genres = new ArrayList(film.getFilm_genres());
+        bundle.putStringArrayList("genres", genres);
+
+        ArrayList film_casts = new ArrayList(film.getFilm_casts());
+        bundle.putStringArrayList("cast", film_casts);
+
+        Intent intent = new Intent(SearchActivity.this, MovieDetail.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        filmSearchAdapter.startListening();
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        filmSearchAdapter.stopListening();
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.main_search, menu);
-//        MenuItem menuItem = menu.findItem(  R.id.app_bar_search);
-//
-//        SearchView searchView = (SearchView) menuItem.getActionView();
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                searchData(query);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                return false;
-//            }
-//        });
-//
-//        return super.onCreateOptionsMenu(menu);
-//    }
-//
-//    private void searchData(String query) {
-//        FirebaseRecyclerOptions<Film> options =
-//                new FirebaseRecyclerOptions.Builder<Film>()
-//                        .setQuery(FirebaseDatabase.getInstance().getReference()
-//                                .child("films").orderByChild("name").startAt(query).endAt(query+"\ufaff"), Film.class)
-//                        .build();
-//        filmSearchAdapter = new FilmSearchAdapter(options);
-//        recyclerView.setAdapter(filmSearchAdapter);
-//    }
-
-//    @Override
-//    public void OnSearchItemClickListener(Film film) {
-//        Bundle bundle = new Bundle();
-//
-//        bundle.putString("backdrop", film.getBackdrop());
-//        bundle.putString("name", film.getName());
-//        bundle.putString("country", film.getCountry());
-//        bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
-//        bundle.putString("desc", film.getDesc());
-//
-//        Intent intent = new Intent(SearchActivity.this, MovieDetail.class);
-//        intent.putExtras(bundle);
-//        startActivity(intent);
-//    }
 
 }

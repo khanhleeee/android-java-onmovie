@@ -24,7 +24,7 @@
         android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Nhập email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
         android:textColor="@color/white"
         android:background="@drawable/bg_input"
@@ -161,24 +161,26 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSignUp" />
 
     <ImageView
-        android:id="@+id/icFbLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:srcCompat="@drawable/icon_fb" />
-
-    <ImageView
         android:id="@+id/icGgLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="172dp"
+        android:src="@drawable/ic_google"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.207"
-        app:layout_constraintStart_toEndOf="@+id/icFbLogin"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
-        app:srcCompat="@drawable/icon_gg" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/tvSignInGG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:text="Hoặc đăng nhập bằng"
+        android:textColor="@color/white"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/icGgLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

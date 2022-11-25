@@ -5,8 +5,11 @@
     android:layout_width="100dp"
     android:orientation="vertical"
     android:layout_marginRight="10dp"
+
     android:background="@color/background"
     android:layout_height="wrap_content">
+
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
