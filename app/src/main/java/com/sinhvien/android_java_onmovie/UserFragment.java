@@ -214,7 +214,6 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     @Override
     public void OnFilmItemCLickListener(Film film) {
         Bundle bundle = new Bundle();
-
         bundle.putString("backdrop", film.getBackdrop());
         bundle.putString("name", film.getName());
         bundle.putString("country", film.getCountry());
@@ -226,7 +225,6 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
-
 
         Intent intent = new Intent(getContext(), MovieDetail.class);
         intent.putExtras(bundle);

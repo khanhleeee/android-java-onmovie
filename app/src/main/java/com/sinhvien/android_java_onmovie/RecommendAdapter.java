@@ -1,4 +1,4 @@
-package com.sinhvien.android_java_onmovie.adapter;
+package com.sinhvien.android_java_onmovie;
 
 import android.content.Context;
 import android.net.Uri;
@@ -11,39 +11,39 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.sinhvien.android_java_onmovie.R;
+import com.sinhvien.android_java_onmovie.adapter.FilmAdapter;
 import com.sinhvien.android_java_onmovie.model.Film;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    public interface OnFilmItemCLickListener {
-        void OnFilmItemCLickListener(Film film);
+    public interface OnRecommendItemClickListener{
+        void OnRecommendItemClickListener(Film film);
     }
 
-    public class ViewHolderFilmCard extends RecyclerView.ViewHolder {
+
+    public class ViewHolderFilmCardRec extends RecyclerView.ViewHolder {
         ImageView image;
         TextView name;
 
-        public ViewHolderFilmCard(@NonNull View itemView) {
+        public ViewHolderFilmCardRec(@NonNull View itemView) {
             super(itemView);
 
-            image = itemView.findViewById(R.id.film_Img);
-            name = itemView.findViewById(R.id.film_Name);
+            image = itemView.findViewById(R.id.film_Img_Rec);
+            name = itemView.findViewById(R.id.film_Name_Rec);
         }
     }
 
     private List<Film> films;
-    private OnFilmItemCLickListener mListener;
+    private OnRecommendItemClickListener mListener;
     private int TYPE_LAYOUT;
 
-    public FilmAdapter(List<Film> films, OnFilmItemCLickListener mListener, int TYPE_LAYOUT) {
+    public RecommendAdapter(List<Film> films, OnRecommendItemClickListener mListener, int TYPE_LAYOUT) {
         this.films = films;
         this.mListener = mListener;
         this.TYPE_LAYOUT = TYPE_LAYOUT;
@@ -56,10 +56,9 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
 
         if(TYPE_LAYOUT == 1) {
-            View view = layoutInflater.inflate(R.layout.row_film_card, parent, false);
-            return new ViewHolderFilmCard(view);
+            View view = layoutInflater.inflate(R.layout.row_film_cart_recommend, parent, false);
+            return new ViewHolderFilmCardRec(view);
         }
-
         return null;
     }
 
@@ -68,8 +67,9 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Film film = films.get(position);
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
+
         if(TYPE_LAYOUT == 1) {
-            ViewHolderFilmCard viewHolder = (ViewHolderFilmCard) holder;
+            ViewHolderFilmCardRec viewHolder = (ViewHolderFilmCardRec) holder;
             StorageReference sliderRef = storageReference.child("images/posters/" + film.getBackdrop());
 
             sliderRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -81,7 +81,7 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             viewHolder.name.setText(film.getName());
 
             viewHolder.itemView.setOnClickListener(view -> {
-                mListener.OnFilmItemCLickListener(film);
+                mListener.OnRecommendItemClickListener(film);
             });
         }
     }
@@ -90,6 +90,4 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public int getItemCount() {
         return films== null ? 0 :films.size();
     }
-
-
 }

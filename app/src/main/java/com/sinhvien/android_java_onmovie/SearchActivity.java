@@ -105,6 +105,9 @@ public class SearchActivity extends AppCompatActivity implements FilmSearchAdapt
                                     tvNoFilmSearch.setText("Từ khoá"+ "\" " + valueSearch + "\" " + "không tồn tại !" );
                                     tvNoFilmSearch.setVisibility(View.VISIBLE);
                                 }
+                                else {
+                                    tvNoFilmSearch.setVisibility(View.INVISIBLE);
+                                }
                                 filmSearchAdapter.setListFilm(listFilmSearch);
                                 filmSearchAdapter.notifyDataSetChanged();
                         }
