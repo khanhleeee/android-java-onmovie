@@ -265,6 +265,9 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         ArrayList videos = new ArrayList(film.getVideos());
         bundle.putStringArrayList("videos", videos);
 
+        ArrayList trailers = new ArrayList(film.getTrailers());
+        bundle.putStringArrayList("trailers", videos);
+
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
 

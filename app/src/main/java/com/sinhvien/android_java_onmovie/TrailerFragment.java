@@ -1,42 +1,42 @@
 package com.sinhvien.android_java_onmovie;
 
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TrailerFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.sinhvien.android_java_onmovie.adapter.TrailerAdapter;
+
+import java.util.ArrayList;
+
 public class TrailerFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    ArrayList trailers;
+    VideoView trailerVideoView;
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public TrailerFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment TrailerFragment.
-     */
-    // TODO: Rename and change types and number of parameters
+
     public static TrailerFragment newInstance(String param1, String param2) {
         TrailerFragment fragment = new TrailerFragment();
         Bundle args = new Bundle();
@@ -60,5 +60,32 @@ public class TrailerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_trailer, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        trailers = new ArrayList();
+        trailerVideoView = view.findViewById(R.id.trailerVideoView);
+
+        Bundle bundle = getActivity().getIntent().getExtras();
+
+        trailers = bundle.getStringArrayList("trailers");
+
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
+        StorageReference videoref = storageReference.child("sourcevideos/films/" + trailers.get(0));
+        videoref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                trailerVideoView.setVideoURI(uri);
+            }
+        });
+
+        MediaController mediaController = new MediaController(getContext());
+        mediaController.setAnchorView(trailerVideoView);
+        trailerVideoView.setMediaController(mediaController);
+        trailerVideoView.requestFocus();
     }
 }
