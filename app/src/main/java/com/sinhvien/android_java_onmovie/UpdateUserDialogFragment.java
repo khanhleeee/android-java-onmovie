@@ -44,7 +44,7 @@ public class UpdateUserDialogFragment extends DialogFragment {
 
     public TextView textView, tvNickname;
     public EditText edtNickname;
-    public Button btnSave;
+    public Button btnSave, btnCancel;
 
     public User user;
 
@@ -83,7 +83,7 @@ public class UpdateUserDialogFragment extends DialogFragment {
                 onClickUpdateNickname();
                 Fragment UserFragment = new UserFragment();
                 FragmentTransaction fn = getActivity().getSupportFragmentManager().beginTransaction();
-                fn.replace(R.layout.dialog_update_user, UserFragment).commit();
+                fn.replace(R.id.dialog_user, UserFragment).commit();
             }
 
         });

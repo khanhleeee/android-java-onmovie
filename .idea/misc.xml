@@ -3,8 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/bg_btn_setting_user.xml" value="0.176" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/bg_grayborder.xml" value="0.134" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/bg_input.xml" value="0.2555" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/bg_primary_btn.xml" value="0.2555" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/border.xml" value="0.134" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/border_update_user_dialog.xml" value="0.1385" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/frame.xml" value="0.2545" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2555" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/season_btn_bg.xml" value="0.2545" />
@@ -15,6 +19,10 @@
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_nick_name.xml" value="0.264" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/dialog_setting_user.xml" value="0.264" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/dialog_update_user.xml" value="0.264" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_filter.xml" value="0.2" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_movies.xml" value="0.14764492753623187" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_nick_name.xml" value="0.25" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_three_intro.xml" value="0.25" />

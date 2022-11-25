@@ -51,6 +51,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     public TextView tvNickName, tvEmail, textView;
     public ImageView imgAvatar, imgEdit;
     public EditText edtNickname;
+    public ImageView imgSetting;
 
     public RecyclerView rvWatchList;
 
@@ -120,6 +121,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         imgEdit = view.findViewById(R.id.imgEdit);
         edtNickname = view.findViewById(R.id.edtNickname);
         textView =  view.findViewById(R.id.textView11);
+        imgSetting = view.findViewById(R.id.imgSetting);
 
         rvWatchList = view.findViewById(R.id.rvWatchList);
 
@@ -150,8 +152,8 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         });
 
         loadWatchList();
-//        loadAllFilms();
         UpdateUser();
+        ShowDialogSetting();
     }
 
     private void loadWatchList() {
@@ -198,11 +200,20 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         });
     }
 
+    public void ShowDialogSetting(){
+
+        imgSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SettingUserDialogFragment dialog = new SettingUserDialogFragment();
+                dialog.show(getActivity().getSupportFragmentManager(), "dialog_setting_user");
+            }
+        });
+    }
+
     @Override
     public void OnFilmItemCLickListener(Film film) {
         Bundle bundle = new Bundle();
-
-        bundle.putString("id", film.getId());
         bundle.putString("backdrop", film.getBackdrop());
         bundle.putString("name", film.getName());
         bundle.putString("country", film.getCountry());
@@ -214,9 +225,6 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
-
-        ArrayList film_casts = new ArrayList(film.getFilm_casts());
-        bundle.putStringArrayList("cast", film_casts);
 
         Intent intent = new Intent(getContext(), MovieDetail.class);
         intent.putExtras(bundle);

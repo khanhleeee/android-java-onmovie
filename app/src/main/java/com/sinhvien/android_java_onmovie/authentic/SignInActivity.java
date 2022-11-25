@@ -24,9 +24,9 @@ import java.util.regex.Pattern;
 
 public class SignInActivity extends AppCompatActivity {
 
-    EditText etEmail, etPass;
-    Button btnLogin;
-    TextView tvSignUp;
+    public EditText etEmail, etPass;
+    public Button btnLogin;
+    public TextView tvSignUp;
 
 
     private FirebaseAuth mAuth;
@@ -52,20 +52,22 @@ public class SignInActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = etEmail.getText().toString().trim();
-                String password = etPass.getText().toString().trim();
-
-//                if(email.isEmpty() || pass.isEmpty()){
-//                    Toast.makeText(SignInActivity.this, "Please enter all information !", Toast.LENGTH_SHORT).show();
-//                }
-//                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-//                    Toast.makeText(SignInActivity.this, "Please enter the correct email format.!", Toast.LENGTH_SHORT).show();
-//                }
-////                else if(!isValidPassword(pass)) {
-////                    Toast.makeText(SignInActivity.this, "Password must be more than 6 characters " +
-////                            "(a-z, A-Z, number, special characters)!", Toast.LENGTH_SHORT).show();
-////                }
-//                else {
+                String username = etEmail.getText().toString();
+                String password = etPass.getText().toString();
+                if (etEmail.getText().toString().isEmpty()) {
+                    etEmail.setError("Không được để trống");
+                    return;
+                }
+                if (etPass.getText().toString().isEmpty()) {
+                    etPass.setError("Không được để trống");
+                    return;
+                }
+                if (etPass.length() < 6) {
+                    etPass.setError("Mật khẩu không được dưới 6 ký tự");
+                    return;
+                }
+                else {
+                    Toast.makeText(SignInActivity.this, "OK", Toast.LENGTH_SHORT).show();
                     mAuth = FirebaseAuth.getInstance();
                     mAuth.signInWithEmailAndPassword("ngoquoctu113113@gmail.com", "123456")
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
@@ -85,7 +87,7 @@ public class SignInActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-//                }
+                }
             }
         });
     }
