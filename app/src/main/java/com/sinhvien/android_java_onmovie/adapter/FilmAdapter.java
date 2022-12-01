@@ -82,7 +82,6 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Film film = films.get(position);
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
-
         if(TYPE_LAYOUT == 1) {
             ViewHolderFilmCard viewHolder = (ViewHolderFilmCard) holder;
             StorageReference sliderRef = storageReference.child("images/posters/" + film.getBackdrop());
@@ -120,7 +119,6 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public int getItemCount() {
         return films== null ? 0 :films.size();
-//        return films.size();
     }
 
 

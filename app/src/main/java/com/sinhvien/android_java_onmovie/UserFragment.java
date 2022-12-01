@@ -44,6 +44,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     public TextView tvNickName, tvEmail, textView, noFilm;
     public ImageView imgAvatar, imgEdit;
     public EditText edtNickname;
+    public ImageView imgSetting;
 
     public RecyclerView rvWatchList;
 
@@ -115,28 +116,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         imgEdit = view.findViewById(R.id.imgEdit);
         edtNickname = view.findViewById(R.id.edtNickname);
         textView =  view.findViewById(R.id.textView11);
-        noFilm = view.findViewById(R.id.tvNoFilm);
-
-
-
-//        AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
-//        dialog.setTitle("Xoá phim");
-//        dialog.setMessage("Bạn muốn xoá phim khỏi danh sách yêu thích ?");
-//        dialog.setPositiveButton("Xoá", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                Toast.makeText(getContext(),
-//                        "Xoa thanh cong", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//        dialog.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialogInterface, int i) {
-//                Toast.makeText(getContext(),
-//                        "Huy", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        imgSetting = view.findViewById(R.id.imgSetting);
 
         rvWatchList = view.findViewById(R.id.rvWatchList);
 
@@ -167,8 +147,8 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         });
 
         loadWatchList();
-//        loadAllFilms();
         UpdateUser();
+        ShowDialogSetting();
     }
 
     private void loadWatchList() {
@@ -216,11 +196,20 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         });
     }
 
+    public void ShowDialogSetting(){
+
+        imgSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SettingUserDialogFragment dialog = new SettingUserDialogFragment();
+                dialog.show(getActivity().getSupportFragmentManager(), "dialog_setting_user");
+            }
+        });
+    }
+
     @Override
     public void OnFilmItemCLickListener(Film film) {
         Bundle bundle = new Bundle();
-
-        bundle.putString("id", film.getId());
         bundle.putString("backdrop", film.getBackdrop());
         bundle.putString("name", film.getName());
         bundle.putString("country", film.getCountry());
@@ -230,11 +219,11 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         ArrayList videos = new ArrayList(film.getVideos());
         bundle.putStringArrayList("videos", videos);
 
+        ArrayList trailers = new ArrayList(film.getTrailers());
+        bundle.putStringArrayList("trailers", trailers);
+
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
-
-        ArrayList film_casts = new ArrayList(film.getFilm_casts());
-        bundle.putStringArrayList("cast", film_casts);
 
         Intent intent = new Intent(getContext(), MovieDetail.class);
         intent.putExtras(bundle);
@@ -242,26 +231,4 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     }
 }
 
-
-//    private void loadAllFilms() {
-//        mDB.child("films").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot itemList : snapshot.getChildren()) {
-//                    Film item = itemList.getValue(Film.class);
-//                    for(int i = 0; i < filmlists.size(); i++){
-//                        if(item.getId().equals(filmlists.get(i))){
-//                            films.add(item);
-//                        }
-//                    }
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 

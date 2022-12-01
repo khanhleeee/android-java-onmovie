@@ -44,7 +44,7 @@ public class MovieDetail extends AppCompatActivity {
     DatabaseReference mDB;
     FirebaseAuth fAuth;
 
-    ArrayList f_genres, f_genres_name, watch_lists, f_casts;
+    ArrayList f_genres, f_genres_name, watch_lists, f_casts, f_trailers;
 
     ImageView backdrop_img, addlist, back;
     TextView tv_content_limitedAge, tv_country, tv_name, tv_content, tv_genres;
@@ -67,6 +67,7 @@ public class MovieDetail extends AppCompatActivity {
         content = bundle.getString("desc");
         f_genres = bundle.getStringArrayList("genres");
         f_casts = bundle.getStringArrayList("cast");
+        f_trailers = bundle.getStringArrayList("trailers");
 
         /* Khai báo các view items */
         viewPager2 = findViewById(R.id.viewpager_detail);
@@ -117,7 +118,6 @@ public class MovieDetail extends AppCompatActivity {
         });
 
         setInformation();
-
 
         DetailAdapter detailAdapter = new DetailAdapter(this);
         viewPager2.setAdapter(detailAdapter);

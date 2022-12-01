@@ -150,6 +150,9 @@ public class RecommendedMovieFragment extends Fragment
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
 
+        ArrayList trailers = new ArrayList(film.getTrailers());
+        bundle.putStringArrayList("trailers", trailers);
+
         ArrayList film_casts = new ArrayList(film.getFilm_casts());
         bundle.putStringArrayList("cast", film_casts);
 

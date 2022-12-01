@@ -117,18 +117,6 @@ public class SearchActivity extends AppCompatActivity implements FilmSearchAdapt
                     });
             }
         });
-        //Dung searchview de tim kiem phim
-//        recyclerView = findViewById(R.id.searchRecyclerView);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//
-//        FirebaseRecyclerOptions<Film> options =
-//                new FirebaseRecyclerOptions.Builder<Film>()
-//                        .setQuery(FirebaseDatabase.getInstance().getReference()
-//                                .child("films"), Film.class)
-//                        .build();
-//        filmSearchAdapter = new FilmSearchAdapter(options);
-//        recyclerView.setAdapter(filmSearchAdapter);
     }
 
     private void loadDefaultFilm (){
@@ -162,7 +150,6 @@ public class SearchActivity extends AppCompatActivity implements FilmSearchAdapt
         bundle.putString("country", film.getCountry());
         bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
         bundle.putString("desc", film.getDesc());
-
         ArrayList videos = new ArrayList(film.getVideos());
         bundle.putStringArrayList("videos", videos);
 

@@ -166,6 +166,7 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot itemFilm: snapshot.getChildren()) {
+                    Log.d("TAG", "aa: " + itemFilm);
                     Film item = itemFilm.getValue(Film.class);
                     if(sliderItems.size() < 4) {
                         sliderItems.add(item);
@@ -264,6 +265,9 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
         ArrayList videos = new ArrayList(film.getVideos());
         bundle.putStringArrayList("videos", videos);
+
+        ArrayList trailers = new ArrayList(film.getTrailers());
+        bundle.putStringArrayList("trailers", trailers);
 
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
