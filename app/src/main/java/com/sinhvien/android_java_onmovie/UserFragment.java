@@ -223,6 +223,9 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         ArrayList videos = new ArrayList(film.getVideos());
         bundle.putStringArrayList("videos", videos);
 
+        ArrayList trailers = new ArrayList(film.getTrailers());
+        bundle.putStringArrayList("trailers", trailers);
+
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
 
@@ -232,26 +235,4 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     }
 }
 
-
-//    private void loadAllFilms() {
-//        mDB.child("films").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot itemList : snapshot.getChildren()) {
-//                    Film item = itemList.getValue(Film.class);
-//                    for(int i = 0; i < filmlists.size(); i++){
-//                        if(item.getId().equals(filmlists.get(i))){
-//                            films.add(item);
-//                        }
-//                    }
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 

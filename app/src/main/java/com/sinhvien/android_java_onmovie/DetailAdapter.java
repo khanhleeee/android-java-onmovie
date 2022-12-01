@@ -15,16 +15,13 @@ public class DetailAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new TrailerFragment ();
+                return new TrailerFragment();
             case 1:
                 return  new CastFragment();
             case 2:
                 return new RecommendedMovieFragment();
-//            default:
-//                return  new TrailerFragment();
         }
         return  null;
-
     }
 
     @Override

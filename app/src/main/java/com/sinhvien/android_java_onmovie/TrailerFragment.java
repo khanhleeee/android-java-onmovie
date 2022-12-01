@@ -1,31 +1,26 @@
 package com.sinhvien.android_java_onmovie;
 
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.MediaController;
-import android.widget.VideoView;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.sinhvien.android_java_onmovie.adapter.TrailerAdapter;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.ArrayList;
 
-public class TrailerFragment extends Fragment {
 
-    ArrayList trailers;
-    VideoView trailerVideoView;
+public class TrailerFragment extends Fragment {
+    private static final String API_KEY = "AIzaSyASFE9jKJdtpv9-2fP90FZcEH9Da_9_6mM";
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -35,7 +30,7 @@ public class TrailerFragment extends Fragment {
 
     public TrailerFragment() {
     }
-
+    
 
     public static TrailerFragment newInstance(String param1, String param2) {
         TrailerFragment fragment = new TrailerFragment();
@@ -62,30 +57,28 @@ public class TrailerFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_trailer, container, false);
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        trailers = new ArrayList();
-        trailerVideoView = view.findViewById(R.id.trailerVideoView);
-
         Bundle bundle = getActivity().getIntent().getExtras();
+        ArrayList videos = bundle.getStringArrayList("trailers");
 
-        trailers = bundle.getStringArrayList("trailers");
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
-        StorageReference videoref = storageReference.child("sourcevideos/films/" + trailers.get(0));
-        videoref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+        YouTubePlayerView youTubePlayerView = view.findViewById(R.id.youtube_player_view);
+        getLifecycle().addObserver(youTubePlayerView);
+
+        youTubePlayerView.addYouTubePlayerListener(new AbstractYouTubePlayerListener() {
             @Override
-            public void onSuccess(Uri uri) {
-                trailerVideoView.setVideoURI(uri);
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                super.onReady(youTubePlayer);
+
+                String videoId = (String) videos.get(0);
+                Log.d("XX", "aa: " + videos.get(0));
+                youTubePlayer.loadVideo(videoId, 0);
             }
         });
-
-        MediaController mediaController = new MediaController(getContext());
-        mediaController.setAnchorView(trailerVideoView);
-        trailerVideoView.setMediaController(mediaController);
-        trailerVideoView.requestFocus();
     }
 }
