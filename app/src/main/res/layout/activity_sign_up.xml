@@ -167,4 +167,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSignInBack" />
 
+    <ImageView
+        android:id="@+id/icGgLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/ic_google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/underlineSignUpLogin" />
+
+    <TextView
+        android:id="@+id/tvSignInGG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="60dp"
+        android:text="Hoặc đăng nhập bằng"
+        android:textColor="@color/white"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/icGgLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnSignUp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
