@@ -150,8 +150,12 @@ public class SearchActivity extends AppCompatActivity implements FilmSearchAdapt
         bundle.putString("country", film.getCountry());
         bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
         bundle.putString("desc", film.getDesc());
+
         ArrayList videos = new ArrayList(film.getVideos());
         bundle.putStringArrayList("videos", videos);
+
+        ArrayList trailers = new ArrayList(film.getTrailers());
+        bundle.putStringArrayList("trailers", trailers);
 
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
@@ -159,7 +163,7 @@ public class SearchActivity extends AppCompatActivity implements FilmSearchAdapt
         ArrayList film_casts = new ArrayList(film.getFilm_casts());
         bundle.putStringArrayList("cast", film_casts);
 
-        Intent intent = new Intent(SearchActivity.this, MovieDetail.class);
+        Intent intent = new Intent(this, MovieDetail.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

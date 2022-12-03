@@ -38,8 +38,8 @@ public class MovieDetail extends AppCompatActivity {
     private ViewPager2 viewPager2;
     private TabLayout tabLayout;
 
-    private SeasonAdapter seasonAdapter;
-    private RecyclerView rv_season;
+
+    ImageView play_movie_img;
 
     DatabaseReference mDB;
     FirebaseAuth fAuth;
@@ -79,6 +79,12 @@ public class MovieDetail extends AppCompatActivity {
         tv_name = findViewById(R.id.tv_movie_name);
         tv_content = findViewById(R.id.txtContent);
         tv_genres = findViewById(R.id.txtGen);
+
+        play_movie_img = findViewById(R.id.play_movie_img);
+        play_movie_img.setOnClickListener(view -> {
+            Intent intent = new Intent(this, StreamFilmActivity.class);
+            startActivity(intent);
+        });
 
         /* Set nút back */
         back = findViewById(R.id.back_img);

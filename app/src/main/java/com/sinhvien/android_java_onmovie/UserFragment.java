@@ -102,13 +102,11 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user, container, false);
-
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         tvNickName = view.findViewById(R.id.tvNickName);
         tvEmail = view.findViewById(R.id.tvEmail);
@@ -133,7 +131,6 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
         rvWatchList.setLayoutManager(gridLayoutManager);
-
 
         this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             public void onDataChange(DataSnapshot snapshot) {
@@ -210,6 +207,8 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     @Override
     public void OnFilmItemCLickListener(Film film) {
         Bundle bundle = new Bundle();
+
+        bundle.putString("id", film.getId());
         bundle.putString("backdrop", film.getBackdrop());
         bundle.putString("name", film.getName());
         bundle.putString("country", film.getCountry());
@@ -224,6 +223,9 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
+
+        ArrayList film_casts = new ArrayList(film.getFilm_casts());
+        bundle.putStringArrayList("cast", film_casts);
 
         Intent intent = new Intent(getContext(), MovieDetail.class);
         intent.putExtras(bundle);

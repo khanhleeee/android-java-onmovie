@@ -109,7 +109,6 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             });
             viewHolder.name.setText(film.getName());
-            viewHolder.icDelete.setVisibility(View.VISIBLE);
             viewHolder.itemView.setOnClickListener(view -> {
                 mListener.OnFilmItemCLickListener(film);
             });

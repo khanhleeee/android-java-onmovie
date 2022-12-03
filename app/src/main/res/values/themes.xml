@@ -29,4 +29,11 @@
     <style name="Theme.Android_Java_onMovie.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Android_Java_onMovie.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    
+    <style name="Theme.AppCompat.Light.noActionBar.FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>

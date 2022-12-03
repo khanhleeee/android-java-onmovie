@@ -37,6 +37,7 @@ public class StreamFilmActivity extends AppCompatActivity {
 
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(videoView);
+
         videoView.setMediaController(mediaController);
         videoView.requestFocus();
         videoView.start();
