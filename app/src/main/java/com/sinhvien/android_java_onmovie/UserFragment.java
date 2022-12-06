@@ -18,6 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -40,6 +44,9 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
     FirebaseDatabase fDatabase;
     FirebaseAuth fAuth;
+
+    GoogleSignInOptions ggSignInOptions;
+    GoogleSignInClient ggSignInClient;
 
     public TextView tvNickName, tvEmail, textView, noFilm;
     public ImageView imgAvatar, imgEdit;
@@ -116,6 +123,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         textView =  view.findViewById(R.id.textView11);
         imgSetting = view.findViewById(R.id.imgSetting);
 
+
         rvWatchList = view.findViewById(R.id.rvWatchList);
 
         films = new ArrayList();
@@ -132,18 +140,20 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
         rvWatchList.setLayoutManager(gridLayoutManager);
 
-        this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            public void onDataChange(DataSnapshot snapshot) {
-                user = snapshot.getValue(User.class);
-                tvNickName.setText(user.getNickname());
-                tvEmail.setText(user.getEmail());
-            }
+            this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                public void onDataChange(DataSnapshot snapshot) {
+                    user = snapshot.getValue(User.class);
+                    tvNickName.setText(user.getNickname());
+                    tvEmail.setText(user.getEmail());
+                }
 
-            public void onCancelled(DatabaseError error) {
-            }
-        });
+                public void onCancelled(DatabaseError error) {
+                }
+            });
+//        }
 
-        loadWatchList();
+
+//        loadWatchList();
         UpdateUser();
         ShowDialogSetting();
     }
