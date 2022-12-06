@@ -17,6 +17,7 @@
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_intro.xml" value="0.4" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_movie_detail.xml" value="0.264" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_nick_name.xml" value="0.264" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_search.xml" value="0.2" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_sign_in.xml" value="0.264" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/dialog_setting_user.xml" value="0.264" />
@@ -28,7 +29,7 @@
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_slider.xml" value="0.14764492753623187" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_three_intro.xml" value="0.25" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_two_intro.xml" value="0.25" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_user.xml" value="0.264" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_user.xml" value="0.1" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/layout_slider.xml" value="0.14764492753623187" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/row_film_card.xml" value="0.14764492753623187" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/row_mylist.xml" value="0.22826086956521738" />
