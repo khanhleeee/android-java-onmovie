@@ -41,7 +41,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     FirebaseDatabase fDatabase;
     FirebaseAuth fAuth;
 
-    public TextView tvNickName, tvEmail, textView, noFilm;
+    public TextView tvNickName, tvEmail, textView, tvEmpty;
     public ImageView imgAvatar, imgEdit;
     public EditText edtNickname;
     public ImageView imgSetting;
@@ -115,6 +115,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         edtNickname = view.findViewById(R.id.edtNickname);
         textView =  view.findViewById(R.id.textView11);
         imgSetting = view.findViewById(R.id.imgSetting);
+        tvEmpty = view.findViewById(R.id.tvEmpty);
 
         rvWatchList = view.findViewById(R.id.rvWatchList);
 
@@ -124,14 +125,15 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         fAuth = FirebaseAuth.getInstance();
 
         mDB = fDatabase.getReference();
+        if(films.equals(null)){
 
-        adapter = new FilmAdapter(films, this, 2);
-
-        rvWatchList.setAdapter(adapter);
-
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
-        rvWatchList.setLayoutManager(gridLayoutManager);
-
+        }
+        else {
+            adapter = new FilmAdapter(films, this, 1);
+            rvWatchList.setAdapter(adapter);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+            rvWatchList.setLayoutManager(gridLayoutManager);
+        }
         this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             public void onDataChange(DataSnapshot snapshot) {
                 user = snapshot.getValue(User.class);
@@ -151,32 +153,38 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     private void loadWatchList() {
         this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).child("watch_lists").addListenerForSingleValueEvent(new ValueEventListener() {
             public void onDataChange(DataSnapshot snapshot) {
-                for (DataSnapshot itemList : snapshot.getChildren()) {
-                    filmlists = (ArrayList) snapshot.getValue();
+                if(snapshot.getValue()!=null) {
+                    for (DataSnapshot itemList : snapshot.getChildren()) {
+                        filmlists = (ArrayList) snapshot.getValue();
+                    }
+                    mDB.child("films").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot itemList : snapshot.getChildren()) {
+                                Film item = itemList.getValue(Film.class);
 
-                }
-                mDB.child("films").addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for (DataSnapshot itemList : snapshot.getChildren()) {
-                            Film item = itemList.getValue(Film.class);
-                            for (int i = 0; i < filmlists.size(); i++) {
-                                if (item.getId().equals(filmlists.get(i))) {
-                                    films.add(item);
+                                for (int i = 0; i < filmlists.size(); i++) {
+                                    if (item.getId().equals(filmlists.get(i))) {
+                                        films.add(item);
+                                    }
                                 }
+                                adapter.notifyDataSetChanged();
+                                rvWatchList.setVisibility(View.VISIBLE);
+                                tvEmpty.setVisibility(View.INVISIBLE);
                             }
 
                         }
-                        adapter.notifyDataSetChanged();
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+                        }
+                    });
+                }
+                else {
+                    tvEmpty.setVisibility(View.VISIBLE);
+                }
             }
-
             public void onCancelled(DatabaseError error) {
             }
         });

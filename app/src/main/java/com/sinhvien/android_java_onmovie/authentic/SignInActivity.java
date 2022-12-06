@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -51,8 +52,8 @@ public class SignInActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String username = etEmail.getText().toString();
-//                String password = etPass.getText().toString();
+                String username = etEmail.getText().toString();
+                String password = etPass.getText().toString();
 //                if (etEmail.getText().toString().isEmpty()) {
 //                    etEmail.setError("Không được để trống");
 //                    return;
@@ -66,12 +67,14 @@ public class SignInActivity extends AppCompatActivity {
 //                    return;
 //                }
 //                else {
+                    Toast.makeText(SignInActivity.this, "OK", Toast.LENGTH_SHORT).show();
                     mAuth = FirebaseAuth.getInstance();
                     mAuth.signInWithEmailAndPassword("ngoquoctu113113@gmail.com", "123456")
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+                                        Log.d("Kien", "" + mAuth);
                                         // Sign in success, update UI with the signed-in user's information
                                         Intent loginToMain = new Intent(SignInActivity.this, MainActivity.class);
                                         startActivity(loginToMain);
@@ -85,8 +88,8 @@ public class SignInActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                }
-//            }
+//                }
+            }
         });
     }
 
