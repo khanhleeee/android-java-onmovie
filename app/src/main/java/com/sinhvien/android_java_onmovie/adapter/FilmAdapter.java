@@ -39,6 +39,18 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    public class ViewHolderFilmCardDelete extends RecyclerView.ViewHolder{
+        ImageView image, icDelete;
+        TextView name;
+
+        public ViewHolderFilmCardDelete(@NonNull View itemView) {
+            super(itemView);
+            image = itemView.findViewById(R.id.film_ImgDelete);
+            name = itemView.findViewById(R.id.film_NameDelete);
+            icDelete= itemView.findViewById(R.id.icDelete);
+        }
+    }
+
     private List<Film> films;
     private OnFilmItemCLickListener mListener;
     private int TYPE_LAYOUT;
@@ -59,15 +71,16 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             View view = layoutInflater.inflate(R.layout.row_film_card, parent, false);
             return new ViewHolderFilmCard(view);
         }
-
-        return null;
+        else{
+            View view = layoutInflater.inflate(R.layout.row_film_card_delete, parent, false);
+            return new ViewHolderFilmCardDelete(view);
+        }
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Film film = films.get(position);
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-
 
         if(TYPE_LAYOUT == 1) {
             ViewHolderFilmCard viewHolder = (ViewHolderFilmCard) holder;
@@ -85,11 +98,26 @@ public class FilmAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 mListener.OnFilmItemCLickListener(film);
             });
         }
+        else  {
+            ViewHolderFilmCardDelete viewHolder = (ViewHolderFilmCardDelete) holder;
+            StorageReference sliderRef = storageReference.child("images/posters/" + film.getBackdrop());
+
+            sliderRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).into(viewHolder.image);
+                }
+            });
+            viewHolder.name.setText(film.getName());
+            viewHolder.itemView.setOnClickListener(view -> {
+                mListener.OnFilmItemCLickListener(film);
+            });
+        }
     }
 
     @Override
     public int getItemCount() {
-        return films.size();
+        return films== null ? 0 :films.size();
     }
 
 

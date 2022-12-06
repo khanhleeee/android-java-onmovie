@@ -38,13 +38,16 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/main_tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:paddingTop="2dp"
         android:background="@color/gray"
         app:tabIndicatorColor="@color/gradient_start_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:tabTextColor="@color/white"
         app:tabIconTint="@color/change_color_menu"
         app:tabSelectedTextColor="@color/gradient_start_color"
+        app:tabTextAppearance="@style/TextAppearance.AppCompat"
+
         app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.tabs.TabItem

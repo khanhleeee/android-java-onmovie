@@ -29,7 +29,6 @@ public class SignInActivity extends AppCompatActivity {
     public Button btnLogin;
     public TextView tvSignUp;
 
-
     private FirebaseAuth mAuth;
 
     @Override
@@ -49,8 +48,6 @@ public class SignInActivity extends AppCompatActivity {
                 startActivity(loginToSignUp);
             }
         });
-
-
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -31,6 +31,8 @@ import com.sinhvien.android_java_onmovie.adapter.FilmAdapter;
 import com.sinhvien.android_java_onmovie.adapter.SliderViewPagerAdapter;
 import com.sinhvien.android_java_onmovie.model.Film;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
@@ -134,11 +136,10 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         rvActionFilm.setAdapter(adapterActionFilm);
         rvNoNameFilm.setAdapter(adapterNoNameFilm);
 
-
-
         LinearLayoutManager monthlyLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         LinearLayoutManager actionLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         LinearLayoutManager nonameLayout = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
         rvMonthlyFilm.setLayoutManager(monthlyLayout);
         rvActionFilm.setLayoutManager(actionLayout);
         rvNoNameFilm.setLayoutManager(nonameLayout);
@@ -164,8 +165,8 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("ME", "" + snapshot);
                 for(DataSnapshot itemFilm: snapshot.getChildren()) {
+                    Log.d("TAG", "aa: " + itemFilm);
                     Film item = itemFilm.getValue(Film.class);
                     if(sliderItems.size() < 4) {
                         sliderItems.add(item);
@@ -255,6 +256,7 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     public void OnFilmItemCLickListener(Film film) {
         Bundle bundle = new Bundle();
 
+        bundle.putString("id", film.getId());
         bundle.putString("backdrop", film.getBackdrop());
         bundle.putString("name", film.getName());
         bundle.putString("country", film.getCountry());
@@ -264,9 +266,14 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         ArrayList videos = new ArrayList(film.getVideos());
         bundle.putStringArrayList("videos", videos);
 
+        ArrayList trailers = new ArrayList(film.getTrailers());
+        bundle.putStringArrayList("trailers", trailers);
+
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
 
+        ArrayList film_casts = new ArrayList(film.getFilm_casts());
+        bundle.putStringArrayList("cast", film_casts);
 
         Intent intent = new Intent(getContext(), MovieDetail.class);
         intent.putExtras(bundle);

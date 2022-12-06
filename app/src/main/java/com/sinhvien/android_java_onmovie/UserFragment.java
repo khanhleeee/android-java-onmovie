@@ -1,8 +1,6 @@
 package com.sinhvien.android_java_onmovie;
 
-import android.app.Dialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,32 +9,27 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.sinhvien.android_java_onmovie.adapter.FilmAdapter;
+import com.sinhvien.android_java_onmovie.authentic.SignInActivity;
 import com.sinhvien.android_java_onmovie.model.Film;
 import com.sinhvien.android_java_onmovie.model.User;
 
 import java.util.ArrayList;
-
-import okhttp3.internal.cache.DiskLruCache;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,6 +51,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     FilmAdapter adapter;
     ArrayList<Film> films;
     ArrayList filmlists;
+
 
     public  User user;
 
@@ -131,18 +125,15 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         fAuth = FirebaseAuth.getInstance();
 
         mDB = fDatabase.getReference();
-
         if(films.equals(null)){
 
         }
         else {
             adapter = new FilmAdapter(films, this, 1);
             rvWatchList.setAdapter(adapter);
-
             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
             rvWatchList.setLayoutManager(gridLayoutManager);
         }
-
         this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             public void onDataChange(DataSnapshot snapshot) {
                 user = snapshot.getValue(User.class);
@@ -181,6 +172,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
                                 rvWatchList.setVisibility(View.VISIBLE);
                                 tvEmpty.setVisibility(View.INVISIBLE);
                             }
+
                         }
 
                         @Override
@@ -224,6 +216,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     public void OnFilmItemCLickListener(Film film) {
         Bundle bundle = new Bundle();
 
+        bundle.putString("id", film.getId());
         bundle.putString("backdrop", film.getBackdrop());
         bundle.putString("name", film.getName());
         bundle.putString("country", film.getCountry());
@@ -233,9 +226,14 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         ArrayList videos = new ArrayList(film.getVideos());
         bundle.putStringArrayList("videos", videos);
 
+        ArrayList trailers = new ArrayList(film.getTrailers());
+        bundle.putStringArrayList("trailers", trailers);
+
         ArrayList genres = new ArrayList(film.getFilm_genres());
         bundle.putStringArrayList("genres", genres);
 
+        ArrayList film_casts = new ArrayList(film.getFilm_casts());
+        bundle.putStringArrayList("cast", film_casts);
 
         Intent intent = new Intent(getContext(), MovieDetail.class);
         intent.putExtras(bundle);
@@ -243,26 +241,4 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     }
 }
 
-
-//    private void loadAllFilms() {
-//        mDB.child("films").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot itemList : snapshot.getChildren()) {
-//                    Film item = itemList.getValue(Film.class);
-//                    for(int i = 0; i < filmlists.size(); i++){
-//                        if(item.getId().equals(filmlists.get(i))){
-//                            films.add(item);
-//                        }
-//                    }
-//                }
-//                adapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-//    }
 
