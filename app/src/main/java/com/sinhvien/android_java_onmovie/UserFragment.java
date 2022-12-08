@@ -18,6 +18,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -41,7 +45,10 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     FirebaseDatabase fDatabase;
     FirebaseAuth fAuth;
 
-    public TextView tvNickName, tvEmail, textView, tvEmpty;
+    GoogleSignInOptions ggSignInOptions;
+    GoogleSignInClient ggSignInClient;
+
+    public TextView tvNickName, tvEmail, textView, noFilm;
     public ImageView imgAvatar, imgEdit;
     public EditText edtNickname;
     public ImageView imgSetting;
@@ -117,6 +124,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         imgSetting = view.findViewById(R.id.imgSetting);
         tvEmpty = view.findViewById(R.id.tvEmpty);
 
+
         rvWatchList = view.findViewById(R.id.rvWatchList);
 
         films = new ArrayList();
@@ -127,25 +135,27 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         mDB = fDatabase.getReference();
         if(films.equals(null)){
 
-        }
-        else {
-            adapter = new FilmAdapter(films, this, 1);
-            rvWatchList.setAdapter(adapter);
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
-            rvWatchList.setLayoutManager(gridLayoutManager);
-        }
-        this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            public void onDataChange(DataSnapshot snapshot) {
-                user = snapshot.getValue(User.class);
-                tvNickName.setText(user.getNickname());
-                tvEmail.setText(user.getEmail());
-            }
+        adapter = new FilmAdapter(films, this, 2);
 
-            public void onCancelled(DatabaseError error) {
-            }
-        });
+        rvWatchList.setAdapter(adapter);
 
-        loadWatchList();
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+        rvWatchList.setLayoutManager(gridLayoutManager);
+
+            this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                public void onDataChange(DataSnapshot snapshot) {
+                    user = snapshot.getValue(User.class);
+                    tvNickName.setText(user.getNickname());
+                    tvEmail.setText(user.getEmail());
+                }
+
+                public void onCancelled(DatabaseError error) {
+                }
+            });
+//        }
+
+
+//        loadWatchList();
         UpdateUser();
         ShowDialogSetting();
     }

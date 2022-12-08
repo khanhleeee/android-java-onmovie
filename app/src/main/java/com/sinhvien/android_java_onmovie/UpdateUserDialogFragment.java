@@ -83,11 +83,10 @@ public class UpdateUserDialogFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 onClickUpdateNickname();
-
-//                DialogFragment fragment = new DialogFragment();
-//                fragment.listener = listener;
-//                return fragment;
-
+                dismiss();
+//                Fragment UserFragment = new UserFragment();
+//                FragmentTransaction fn = getActivity().getSupportFragmentManager().beginTransaction();
+//                fn.replace(R.id.dialog_user, UserFragment).commit();
             }
 
         });

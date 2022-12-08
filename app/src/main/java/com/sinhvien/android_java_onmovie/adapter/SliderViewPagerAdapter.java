@@ -62,12 +62,13 @@ public class SliderViewPagerAdapter extends RecyclerView.Adapter<SliderViewPager
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView backdrop;
+        ImageView backdrop, ic_play;
         TextView name;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            ic_play = itemView.findViewById(R.id.icPlaySlider);
             backdrop = itemView.findViewById(R.id.slider_backdrop);
             name = itemView.findViewById(R.id.slider_name);
         }
