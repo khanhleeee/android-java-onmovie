@@ -100,12 +100,12 @@ public class SignInActivity extends AppCompatActivity {
 //                    return;
 //                }
 //                else {
-
                     mAuth.signInWithEmailAndPassword(username, password)
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+                                        Log.d("Kien", "" + mAuth);
                                         // Sign in success, update UI with the signed-in user's information
                                         Intent loginToMain = new Intent(SignInActivity.this, MainActivity.class);
                                         startActivity(loginToMain);
@@ -119,8 +119,8 @@ public class SignInActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                }
-//            }
+//                }
+            }
         });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

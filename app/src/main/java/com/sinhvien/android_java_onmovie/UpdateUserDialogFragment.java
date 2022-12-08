@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -69,6 +70,7 @@ public class UpdateUserDialogFragment extends DialogFragment {
         edtNickname = view.findViewById(R.id.edtNickname);
         textView =  view.findViewById(R.id.textView11);
         btnSave = view.findViewById(R.id.btnSave);
+        btnCancel = view.findViewById(R.id.btnCancel);
         tvNickname = view.findViewById(R.id.tvNickName);
 
         fDatabase = FirebaseDatabase.getInstance();
@@ -89,8 +91,25 @@ public class UpdateUserDialogFragment extends DialogFragment {
 
         });
 
-
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+        
         ShowDialog();
+
+//        AlertDialog optionDialog = new AlertDialog.Builder(getContext()).create();
+//
+//        btnCancel.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                
+//            }
+//        });
+
+
 
     }
 

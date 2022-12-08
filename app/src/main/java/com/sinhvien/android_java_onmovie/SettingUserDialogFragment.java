@@ -26,7 +26,7 @@ import com.sinhvien.android_java_onmovie.model.User;
 public class SettingUserDialogFragment extends DialogFragment {
     FirebaseAuth fAuth;
 
-    public Button btnLogout;
+    public Button btnLogout, btnCancel;
 
 
     @Override
@@ -40,6 +40,8 @@ public class SettingUserDialogFragment extends DialogFragment {
         super.onViewCreated(view, savedInstanceState);
         fAuth = FirebaseAuth.getInstance();
         btnLogout = view.findViewById(R.id.btnLogout);
+        btnCancel = view.findViewById(R.id.btnCancel);
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +49,13 @@ public class SettingUserDialogFragment extends DialogFragment {
                 Intent intent = new Intent(getContext(), SignInActivity.class);
                 startActivity(intent);
                 getActivity().finish();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
             }
         });
     }
