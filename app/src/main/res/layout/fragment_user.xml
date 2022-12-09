@@ -29,16 +29,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp">
 
-<!--                <TextView-->
-<!--                    android:id="@+id/textView10"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginLeft="30dp"-->
-<!--                    android:text="Hồ sơ"-->
-<!--                    android:textColor="@color/white"-->
-<!--                    android:textSize="21dp"-->
-<!--                    android:textStyle="bold" />-->
-
                 <ImageView
                     android:id="@+id/imgSetting"
                     android:layout_width="26dp"

@@ -47,10 +47,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     FirebaseDatabase fDatabase;
     FirebaseAuth fAuth;
 
-    GoogleSignInOptions ggSignInOptions;
-    GoogleSignInClient ggSignInClient;
-
-    public TextView tvNickName, tvEmail, textView, noFilm;
+    public TextView tvNickName, tvEmail, textView, tvEmpty;
     public ImageView imgAvatar, imgEdit;
     public EditText edtNickname;
     public ImageView imgSetting;
@@ -79,15 +76,6 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment UserFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static UserFragment newInstance(String param1, String param2) {
         UserFragment fragment = new UserFragment();
         Bundle args = new Bundle();
@@ -117,20 +105,14 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        UserFragment fragmentA = new UserFragment();
-//        getFragmentManager().beginTransaction()
-//                .replace(R.id.user_fragment,fragmentA,"YOUR_TARGET_FRAGMENT_TAG")
-//                .addToBackStack("YOUR_SOURCE_FRAGMENT_TAG").commit();
-
         tvNickName = view.findViewById(R.id.tvNickName);
         tvEmail = view.findViewById(R.id.tvEmail);
         imgAvatar = view.findViewById(R.id.imgAvatar);
         imgEdit = view.findViewById(R.id.imgEdit);
         edtNickname = view.findViewById(R.id.edtNickname);
-        textView =  view.findViewById(R.id.textView11);
+        textView = view.findViewById(R.id.textView11);
         imgSetting = view.findViewById(R.id.imgSetting);
         tvEmpty = view.findViewById(R.id.tvEmpty);
-
 
         rvWatchList = view.findViewById(R.id.rvWatchList);
 
@@ -140,14 +122,14 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         fAuth = FirebaseAuth.getInstance();
 
         mDB = fDatabase.getReference();
-        if(films.equals(null)){
+        if (films.equals(null)) {
 
-        adapter = new FilmAdapter(films, this, 2);
+            adapter = new FilmAdapter(films, this, 2);
 
-        rvWatchList.setAdapter(adapter);
+            rvWatchList.setAdapter(adapter);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
-        rvWatchList.setLayoutManager(gridLayoutManager);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+            rvWatchList.setLayoutManager(gridLayoutManager);
 
             this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 public void onDataChange(DataSnapshot snapshot) {
@@ -159,56 +141,54 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
                 public void onCancelled(DatabaseError error) {
                 }
             });
-//        }
 
-
-//        loadWatchList();
-        UpdateUser();
-        ShowDialogSetting();
+            loadWatchList();
+            UpdateUser();
+            ShowDialogSetting();
+        }
     }
 
-    private void loadWatchList() {
-        this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).child("watch_lists").addListenerForSingleValueEvent(new ValueEventListener() {
-            public void onDataChange(DataSnapshot snapshot) {
-                if(snapshot.getValue()!=null) {
-                    for (DataSnapshot itemList : snapshot.getChildren()) {
-                        filmlists = (ArrayList) snapshot.getValue();
-                    }
-                    mDB.child("films").addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot itemList : snapshot.getChildren()) {
-                                Film item = itemList.getValue(Film.class);
+        private void loadWatchList () {
+            this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).child("watch_lists").addListenerForSingleValueEvent(new ValueEventListener() {
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.getValue() != null) {
+                        for (DataSnapshot itemList : snapshot.getChildren()) {
+                            filmlists = (ArrayList) snapshot.getValue();
+                        }
+                        mDB.child("films").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot itemList : snapshot.getChildren()) {
+                                    Film item = itemList.getValue(Film.class);
 
-                                for (int i = 0; i < filmlists.size(); i++) {
-                                    if (item.getId().equals(filmlists.get(i))) {
-                                        films.add(item);
+                                    for (int i = 0; i < filmlists.size(); i++) {
+                                        if (item.getId().equals(filmlists.get(i))) {
+                                            films.add(item);
+                                        }
                                     }
+                                    adapter.notifyDataSetChanged();
+                                    rvWatchList.setVisibility(View.VISIBLE);
+                                    tvEmpty.setVisibility(View.INVISIBLE);
                                 }
-                                adapter.notifyDataSetChanged();
-                                rvWatchList.setVisibility(View.VISIBLE);
-                                tvEmpty.setVisibility(View.INVISIBLE);
+
                             }
 
-                        }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
+                            }
+                        });
+                    } else {
+                        tvEmpty.setVisibility(View.VISIBLE);
+                    }
+                }
 
-                        }
-                    });
+                public void onCancelled(DatabaseError error) {
                 }
-                else {
-                    tvEmpty.setVisibility(View.VISIBLE);
-                }
-            }
-            public void onCancelled(DatabaseError error) {
-            }
-        });
-    }
+            });
+        }
 
     public void UpdateUser(){
-
         imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -228,6 +208,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
             }
         });
     }
+
 
 
     @Override

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -35,6 +36,7 @@ public class StreamFilmActivity extends AppCompatActivity {
            }
        });
 
+       
         MediaController mediaController = new MediaController(this);
         mediaController.setAnchorView(videoView);
 
