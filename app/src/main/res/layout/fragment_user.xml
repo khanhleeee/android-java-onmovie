@@ -34,7 +34,7 @@
                     android:layout_width="26dp"
                     android:layout_height="26dp"
                     android:layout_alignParentRight="true"
-                    android:layout_marginRight="30dp"
+                    android:layout_marginRight="28dp"
                     android:src="@drawable/logout" />
 
             </RelativeLayout>
