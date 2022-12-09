@@ -48,6 +48,7 @@ public class NickNameActivity extends AppCompatActivity {
                 email = extras.getString("email");
                 password = extras.getString("password");
                 nickname = tvNickName.getText().toString();
+
             } else {
                 email = password = nickname = "";
             }
@@ -64,7 +65,7 @@ public class NickNameActivity extends AppCompatActivity {
                                 Map<String,Object> user = new HashMap<>();
                                 user.put("email",email);
                                 user.put("password",password);
-                                user.put("nickname",nickname);
+                                user.put("nickname",tvNickName);
 
 
                                 databaseReference.child("users").child(userID).setValue(user)

@@ -8,9 +8,13 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.sinhvien.android_java_onmovie.MainActivity;
 import com.sinhvien.android_java_onmovie.R;
+import com.sinhvien.android_java_onmovie.authentic.SignInActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -20,6 +24,8 @@ public class WelcomeActivity extends AppCompatActivity {
     ImageView logo, imgPopcorn, imgFilmPopcorn;
     Animation topAnimation, bottomAnimation;
     Timer timer;
+
+    private FirebaseAuth mAuth;
 
 
     @Override
@@ -51,4 +57,6 @@ public class WelcomeActivity extends AppCompatActivity {
         }, 5000);
 
     }
+
+
 }

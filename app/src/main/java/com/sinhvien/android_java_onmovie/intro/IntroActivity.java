@@ -8,9 +8,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.sinhvien.android_java_onmovie.MainActivity;
 import com.sinhvien.android_java_onmovie.R;
 import com.sinhvien.android_java_onmovie.authentic.SignInActivity;
 import com.sinhvien.android_java_onmovie.adapter.IntroViewPagerAdapter;
@@ -21,12 +25,13 @@ public class IntroActivity extends AppCompatActivity {
     IntroViewPagerAdapter introViewPagerAdapter;
     TabLayout tabLayout;
     Button btnStart;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
-
+        mAuth = FirebaseAuth.getInstance();
 
         //setup Viewpager
         screenPager = findViewById(R.id.screen_viewpager);
@@ -55,6 +60,29 @@ public class IntroActivity extends AppCompatActivity {
                 }
             }
         }).attach();
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateUI(currentUser);
+    }
+
+    private void updateUI(FirebaseUser user) {
+        FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+        if(user1 != null){
+            Intent intent=new Intent(IntroActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+            Toast.makeText(IntroActivity.this,
+                    "LOGIN GOOGLE SUCCESSFUL!!!", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(IntroActivity.this, "chua co dang nhap bang gg", Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

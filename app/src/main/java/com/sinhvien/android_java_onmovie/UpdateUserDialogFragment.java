@@ -85,7 +85,6 @@ public class UpdateUserDialogFragment extends DialogFragment {
             public void onClick(View view) {
                 onClickUpdateNickname();
                 dismiss();
-
             }
 
         });
