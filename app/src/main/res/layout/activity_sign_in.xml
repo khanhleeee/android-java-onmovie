@@ -183,4 +183,17 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:buttonTint="#FFFFFF"
+        android:text="Ghi nhớ đăng nhập"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/tvForgotPassLogin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/etPasswordLogin"
+        app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,8 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -34,12 +36,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private BroadcastReceiver broadcastReceiver;
+
     TabLayout menuTablayout;
     ImageView ic_search;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        broadcastReceiver = new BroadcastReceiver();
+
         ic_search = findViewById(R.id.ic_search);
         ic_search.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,5 +95,16 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.main_content, fragment).commit();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        registerReceiver(broadcastReceiver, intentFilter);
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(broadcastReceiver);
+    }
 }
