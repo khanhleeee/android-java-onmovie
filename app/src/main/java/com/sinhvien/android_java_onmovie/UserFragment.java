@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -131,11 +132,15 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
             rvWatchList.setLayoutManager(gridLayoutManager);
 
+            Log.d("AAA", "AAA: " + fAuth.getCurrentUser().getUid());
+
             this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 public void onDataChange(DataSnapshot snapshot) {
                     user = snapshot.getValue(User.class);
+
                     tvNickName.setText(user.getNickname());
                     tvEmail.setText(user.getEmail());
+                    Log.d("PPP", " "+fAuth.getCurrentUser());
                 }
 
                 public void onCancelled(DatabaseError error) {
