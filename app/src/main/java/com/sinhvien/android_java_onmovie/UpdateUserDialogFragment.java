@@ -3,6 +3,7 @@ package com.sinhvien.android_java_onmovie;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -83,10 +84,7 @@ public class UpdateUserDialogFragment extends DialogFragment {
             @Override
             public void onClick(View view) {
                 onClickUpdateNickname();
-
-//                DialogFragment fragment = new DialogFragment();
-//                fragment.listener = listener;
-//                return fragment;
+                dismiss();
 
             }
 
@@ -100,15 +98,6 @@ public class UpdateUserDialogFragment extends DialogFragment {
         });
         
         ShowDialog();
-
-//        AlertDialog optionDialog = new AlertDialog.Builder(getContext()).create();
-//
-//        btnCancel.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                
-//            }
-//        });
 
 
 
@@ -135,8 +124,9 @@ public class UpdateUserDialogFragment extends DialogFragment {
                         .build();
 
                 if (isNameChanged()){
-                    Toast.makeText(getContext(), "Data has been updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Cập nhật nick name thành công!", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
     private boolean isNameChanged() {

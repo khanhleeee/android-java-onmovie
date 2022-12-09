@@ -1,11 +1,13 @@
 package com.sinhvien.android_java_onmovie;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -107,6 +109,11 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+//        UserFragment fragmentA = new UserFragment();
+//        getFragmentManager().beginTransaction()
+//                .replace(R.id.user_fragment,fragmentA,"YOUR_TARGET_FRAGMENT_TAG")
+//                .addToBackStack("YOUR_SOURCE_FRAGMENT_TAG").commit();
 
         tvNickName = view.findViewById(R.id.tvNickName);
         tvEmail = view.findViewById(R.id.tvEmail);
@@ -211,6 +218,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
             }
         });
     }
+
 
     @Override
     public void OnFilmItemCLickListener(Film film) {

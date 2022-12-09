@@ -3,12 +3,15 @@ package com.sinhvien.android_java_onmovie.authentic;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,18 +31,31 @@ public class SignInActivity extends AppCompatActivity {
     public EditText etEmail, etPass;
     public Button btnLogin;
     public TextView tvSignUp;
+    public CheckBox checkBox;
 
     private FirebaseAuth mAuth;
 
+    private ProgressDialog progressDoalog;
+
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
+
+        progressDoalog = new ProgressDialog(this);
+
         tvSignUp = findViewById(R.id.tvSignUp);
         etEmail = findViewById(R.id.etEmailLogin);
         etPass = findViewById(R.id.etPasswordLogin);
         btnLogin = findViewById(R.id.btnLogin);
+        checkBox = findViewById(R.id.checkBox);
+
+        etEmail.setText(sharedPreferences.getString("taikhoan", ""));
+        etPass.setText(sharedPreferences.getString("matkhau", ""));
+        checkBox.setChecked(sharedPreferences.getBoolean("checked", false));
 
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +68,7 @@ public class SignInActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressDoalog.show();
                 String username = etEmail.getText().toString();
                 String password = etPass.getText().toString();
 //                if (etEmail.getText().toString().isEmpty()) {
@@ -69,12 +86,25 @@ public class SignInActivity extends AppCompatActivity {
 //                else {
                     Toast.makeText(SignInActivity.this, "OK", Toast.LENGTH_SHORT).show();
                     mAuth = FirebaseAuth.getInstance();
-                    mAuth.signInWithEmailAndPassword("ngoquoctu113113@gmail.com", "123456")
+                    mAuth.signInWithEmailAndPassword(username, password)
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
+                                    progressDoalog.dismiss();
                                     if (task.isSuccessful()) {
-                                        Log.d("Kien", "" + mAuth);
+                                        if (checkBox.isChecked()){
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("taikhoan", username);
+                                            editor.putString("matkhau", password);
+                                            editor.putBoolean("checked", true);
+                                            editor.commit();
+                                        }else {
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.remove("taikhoan");
+                                            editor.remove("matkhau");
+                                            editor.remove("checked");
+                                            editor.commit();
+                                        }
                                         // Sign in success, update UI with the signed-in user's information
                                         Intent loginToMain = new Intent(SignInActivity.this, MainActivity.class);
                                         startActivity(loginToMain);

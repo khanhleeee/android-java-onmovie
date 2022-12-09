@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.sinhvien.android_java_onmovie.MainActivity;
 import com.sinhvien.android_java_onmovie.R;
 
 import java.util.Timer;
@@ -37,6 +39,7 @@ public class WelcomeActivity extends AppCompatActivity {
         logo.setAnimation(topAnimation);
         imgFilmPopcorn.setAnimation(bottomAnimation);
         imgPopcorn.setAnimation(bottomAnimation);
+
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
