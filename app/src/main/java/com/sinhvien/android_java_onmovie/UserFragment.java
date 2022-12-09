@@ -20,9 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -50,7 +48,7 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     GoogleSignInOptions ggSignInOptions;
     GoogleSignInClient ggSignInClient;
 
-    public TextView tvNickName, tvEmail, textView, noFilm;
+    public TextView tvNickName, tvEmail, textView, noFilm, tvEmpty;
     public ImageView imgAvatar, imgEdit;
     public EditText edtNickname;
     public ImageView imgSetting;
@@ -142,12 +140,12 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         mDB = fDatabase.getReference();
         if(films.equals(null)){
 
-        adapter = new FilmAdapter(films, this, 2);
+            adapter = new FilmAdapter(films, this, 2);
 
-        rvWatchList.setAdapter(adapter);
+            rvWatchList.setAdapter(adapter);
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
-        rvWatchList.setLayoutManager(gridLayoutManager);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+            rvWatchList.setLayoutManager(gridLayoutManager);
 
             this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                 public void onDataChange(DataSnapshot snapshot) {
@@ -161,102 +159,100 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
             });
 //        }
 
+//
+//            loadWatchList();
+//            UpdateUser();
+//            ShowDialogSetting();
+        }
 
-//        loadWatchList();
-        UpdateUser();
-        ShowDialogSetting();
-    }
+        private void loadWatchList() {
+            this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).child("watch_lists").addListenerForSingleValueEvent(new ValueEventListener() {
+                public void onDataChange(DataSnapshot snapshot) {
+                    if(snapshot.getValue()!=null) {
+                        for (DataSnapshot itemList : snapshot.getChildren()) {
+                            filmlists = (ArrayList) snapshot.getValue();
+                        }
+                        mDB.child("films").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                for (DataSnapshot itemList : snapshot.getChildren()) {
+                                    Film item = itemList.getValue(Film.class);
 
-    private void loadWatchList() {
-        this.fDatabase.getReference().child("users").child(fAuth.getCurrentUser().getUid()).child("watch_lists").addListenerForSingleValueEvent(new ValueEventListener() {
-            public void onDataChange(DataSnapshot snapshot) {
-                if(snapshot.getValue()!=null) {
-                    for (DataSnapshot itemList : snapshot.getChildren()) {
-                        filmlists = (ArrayList) snapshot.getValue();
-                    }
-                    mDB.child("films").addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for (DataSnapshot itemList : snapshot.getChildren()) {
-                                Film item = itemList.getValue(Film.class);
-
-                                for (int i = 0; i < filmlists.size(); i++) {
-                                    if (item.getId().equals(filmlists.get(i))) {
-                                        films.add(item);
+                                    for (int i = 0; i < filmlists.size(); i++) {
+                                        if (item.getId().equals(filmlists.get(i))) {
+                                            films.add(item);
+                                        }
                                     }
+                                    adapter.notifyDataSetChanged();
+                                    rvWatchList.setVisibility(View.VISIBLE);
+                                    tvEmpty.setVisibility(View.INVISIBLE);
                                 }
-                                adapter.notifyDataSetChanged();
-                                rvWatchList.setVisibility(View.VISIBLE);
-                                tvEmpty.setVisibility(View.INVISIBLE);
+
                             }
 
-                        }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
+                            }
+                        });
+                    }
+                    else {
+                        tvEmpty.setVisibility(View.VISIBLE);
+                    }
                 }
-                else {
-                    tvEmpty.setVisibility(View.VISIBLE);
+                public void onCancelled(DatabaseError error) {
                 }
-            }
-            public void onCancelled(DatabaseError error) {
-            }
-        });
-    }
+            });
+        }
 
-    public void UpdateUser(){
+        public void UpdateUser(){
 
-        imgEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                UpdateUserDialogFragment dialog = new UpdateUserDialogFragment(user);
-                dialog.show(getActivity().getSupportFragmentManager(), "dialog_update_user");
-            }
-        });
-    }
+            imgEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    UpdateUserDialogFragment dialog = new UpdateUserDialogFragment(user);
+                    dialog.show(getActivity().getSupportFragmentManager(), "dialog_update_user");
+                }
+            });
+        }
 
-    public void ShowDialogSetting(){
+        public void ShowDialogSetting(){
 
-        imgSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SettingUserDialogFragment dialog = new SettingUserDialogFragment();
-                dialog.show(getActivity().getSupportFragmentManager(), "dialog_setting_user");
-            }
-        });
-    }
+            imgSetting.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SettingUserDialogFragment dialog = new SettingUserDialogFragment();
+                    dialog.show(getActivity().getSupportFragmentManager(), "dialog_setting_user");
+                }
+            });
+        }
 
 
-    @Override
-    public void OnFilmItemCLickListener(Film film) {
-        Bundle bundle = new Bundle();
-
-        bundle.putString("id", film.getId());
-        bundle.putString("backdrop", film.getBackdrop());
-        bundle.putString("name", film.getName());
-        bundle.putString("country", film.getCountry());
-        bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
-        bundle.putString("desc", film.getDesc());
-
-        ArrayList videos = new ArrayList(film.getVideos());
-        bundle.putStringArrayList("videos", videos);
-
-        ArrayList trailers = new ArrayList(film.getTrailers());
-        bundle.putStringArrayList("trailers", trailers);
-
-        ArrayList genres = new ArrayList(film.getFilm_genres());
-        bundle.putStringArrayList("genres", genres);
-
-        ArrayList film_casts = new ArrayList(film.getFilm_casts());
-        bundle.putStringArrayList("cast", film_casts);
-
-        Intent intent = new Intent(getContext(), MovieDetail.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
-    }
-}
-
-
+//        @Override
+//        public void OnFilmItemCLickListener(Film film) {
+//            Bundle bundle = new Bundle();
+//
+//            bundle.putString("id", film.getId());
+//            bundle.putString("backdrop", film.getBackdrop());
+//            bundle.putString("name", film.getName());
+//            bundle.putString("country", film.getCountry());
+//            bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
+//            bundle.putString("desc", film.getDesc());
+//
+//            ArrayList videos = new ArrayList(film.getVideos());
+//            bundle.putStringArrayList("videos", videos);
+//
+//            ArrayList trailers = new ArrayList(film.getTrailers());
+//            bundle.putStringArrayList("trailers", trailers);
+//
+//            ArrayList genres = new ArrayList(film.getFilm_genres());
+//            bundle.putStringArrayList("genres", genres);
+//
+//            ArrayList film_casts = new ArrayList(film.getFilm_casts());
+//            bundle.putStringArrayList("cast", film_casts);
+//
+//            Intent intent = new Intent(getContext(), MovieDetail.class);
+//            intent.putExtras(bundle);
+//            startActivity(intent);
+//        }
+//    }

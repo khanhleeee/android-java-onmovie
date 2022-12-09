@@ -95,7 +95,7 @@ public class UpdateUserDialogFragment extends DialogFragment {
                 dismiss();
             }
         });
-        
+
         ShowDialog();
 
 
@@ -116,17 +116,17 @@ public class UpdateUserDialogFragment extends DialogFragment {
     }
 
     public void onClickUpdateNickname(){
-                String strNickName = edtNickname.getText().toString().trim();
-                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                        .setDisplayName(String.valueOf(strNickName))
+        String strNickName = edtNickname.getText().toString().trim();
+        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                .setDisplayName(String.valueOf(strNickName))
 //                .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
-                        .build();
+                .build();
 
-                if (isNameChanged()){
-                    Toast.makeText(getContext(), "Cập nhật nick name thành công!", Toast.LENGTH_SHORT).show();
-                }
+        if (isNameChanged()){
+            Toast.makeText(getContext(), "Cập nhật nick name thành công!", Toast.LENGTH_SHORT).show();
+        }
 
-            }
+    }
 
     private boolean isNameChanged() {
         mDB.child("users").child(fAuth.getCurrentUser().getUid()).child("nickname").setValue(edtNickname.getText().toString());
