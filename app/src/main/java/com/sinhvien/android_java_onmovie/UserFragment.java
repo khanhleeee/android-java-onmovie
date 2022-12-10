@@ -20,9 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -114,7 +112,6 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         fAuth = FirebaseAuth.getInstance();
 
         mDB = fDatabase.getReference();
-        if (films.equals(null)) {
 
             adapter = new FilmAdapter(films, this, 2);
 
@@ -137,7 +134,6 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
             loadWatchList();
             UpdateUser();
             ShowDialogSetting();
-        }
     }
 
         private void loadWatchList () {
