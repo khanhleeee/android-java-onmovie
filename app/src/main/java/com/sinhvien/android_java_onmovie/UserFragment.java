@@ -37,11 +37,6 @@ import com.sinhvien.android_java_onmovie.model.User;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link UserFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLickListener{
 
     FirebaseDatabase fDatabase;
@@ -58,13 +53,10 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
     ArrayList<Film> films;
     ArrayList filmlists;
 
-
     public  User user;
 
     DatabaseReference mDB;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -208,8 +200,6 @@ public class UserFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
             }
         });
     }
-
-
 
     @Override
     public void OnFilmItemCLickListener(Film film) {
