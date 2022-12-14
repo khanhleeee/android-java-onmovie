@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,9 +43,10 @@ public class SignUpActivity extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("email", etEmailSignUp.getText().toString());
                 bundle.putString("password", etPasswordSignUp.getText().toString());
-                Intent i = new Intent(SignUpActivity.this,NickNameActivity.class);
-                i.putExtras(bundle);
-                startActivity(i);
+                Intent e = new Intent(SignUpActivity.this,NickNameActivity.class);
+                e.putExtras(bundle);
+                Log.d("BabyFour", "" + e.putExtras(bundle));
+                startActivity(e);
             }
         });
 
