@@ -1,5 +1,7 @@
 package com.sinhvien.android_java_onmovie;
 
+import static com.sinhvien.android_java_onmovie.R.drawable.*;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -39,13 +41,15 @@ public class MainActivity extends AppCompatActivity {
     private BroadcastReceiver broadcastReceiver;
 
     TabLayout menuTablayout;
-    ImageView ic_search;
+    ImageView ic_search, logo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         broadcastReceiver = new BroadcastReceiver();
+
+        logo = findViewById(R.id.logo);
 
         ic_search = findViewById(R.id.ic_search);
         ic_search.setOnClickListener(new View.OnClickListener() {
@@ -81,12 +85,18 @@ public class MainActivity extends AppCompatActivity {
 
         switch (position) {
             case 0:
+                ic_search.setVisibility(View.VISIBLE);
+                logo.setVisibility(View.VISIBLE);
                 fragment = new HomeFragment();
                 break;
             case 1:
+                ic_search.setVisibility(View.VISIBLE);
+                logo.setVisibility(View.VISIBLE);
                 fragment = new MoviesFragment();
                 break;
             case 2:
+                ic_search.setVisibility(View.INVISIBLE);
+                logo.setVisibility(View.INVISIBLE);
                 fragment = new UserFragment();
                 break;
         }
@@ -107,4 +117,6 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
         unregisterReceiver(broadcastReceiver);
     }
+
+
 }
