@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class NickNameActivity extends AppCompatActivity {
 
-    TextView tvNickName;
+    TextView etNickName;
     Button btnSignUpComplete;
     FirebaseAuth fAuth;
     FirebaseDatabase fDatabase;
@@ -37,7 +37,7 @@ public class NickNameActivity extends AppCompatActivity {
         fAuth = FirebaseAuth.getInstance();
         fDatabase = FirebaseDatabase.getInstance();
 
-        tvNickName = findViewById(R.id.tvNickName);
+        etNickName = findViewById(R.id.etNickName);
         btnSignUpComplete = findViewById(R.id.btnSignUpComplete);
 
         btnSignUpComplete.setOnClickListener(view -> {
@@ -47,7 +47,7 @@ public class NickNameActivity extends AppCompatActivity {
             if (extras != null){
                 email = extras.getString("email");
                 password = extras.getString("password");
-                nickname = tvNickName.getText().toString();
+                nickname = etNickName.getText().toString();
 
             } else {
                 email = password = nickname = "";
@@ -65,7 +65,7 @@ public class NickNameActivity extends AppCompatActivity {
                                 Map<String,Object> user = new HashMap<>();
                                 user.put("email",email);
                                 user.put("password",password);
-                                user.put("nickname",tvNickName);
+                                user.put("nickname",nickname);
 
 
                                 databaseReference.child("users").child(userID).setValue(user)
@@ -99,6 +99,5 @@ public class NickNameActivity extends AppCompatActivity {
         });
 
     }
-
 
 }

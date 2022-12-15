@@ -226,6 +226,7 @@ public class SignInActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
+        Log.d("AAA", " "+user1);
         if(user1 != null){
             Intent intent=new Intent(SignInActivity.this, MainActivity.class);
             startActivity(intent);
@@ -238,9 +239,6 @@ public class SignInActivity extends AppCompatActivity {
         }
 
     }
-
-
-
 
     public static boolean isValidPassword(final String password) {
         Pattern pattern;

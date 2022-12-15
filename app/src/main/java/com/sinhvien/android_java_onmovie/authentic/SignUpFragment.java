@@ -95,17 +95,5 @@ public class SignUpFragment extends Fragment {
 
         });
 
-
-//        tvSignInBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i = new Intent(SignUpActivity.this,SignInActivity.class);
-//                startActivity(i);
-//            }
-//        });
-
-
-
-
     }
 }

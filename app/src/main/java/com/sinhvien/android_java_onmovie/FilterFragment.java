@@ -14,7 +14,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.sinhvien.android_java_onmovie.adapter.CountryAdapter;
 import com.sinhvien.android_java_onmovie.adapter.FilmAdapter;
@@ -35,6 +40,8 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
     TextView tvName;
     RecyclerView rvFilms, rvCountries;
 
+    Button btnNewest, btnOldest;
+
     FilmAdapter adapter;
     CountryAdapter cAdapter;
 
@@ -46,6 +53,9 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
 
     public String GERNE_ID;
     public String COUNTRY_ID;
+
+    boolean isNew = true;
+
 
     public FilterFragment() {
     }
@@ -62,6 +72,37 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
         super.onViewCreated(view, savedInstanceState);
 
         /* KHAI BAO VA KHOI TAO */
+        btnNewest = view.findViewById(R.id.btnNewest);
+        btnOldest = view.findViewById(R.id.btnOldest);
+
+        btnOldest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isNew = false;
+                if(GERNE_ID.equals("all")) {
+                    loadAllFilms();
+                } else {
+                    loadFilterFilms();
+                }
+                btnOldest.setBackgroundDrawable(getResources().getDrawable(R.drawable.season_btn_bg));
+                btnNewest.setBackgroundDrawable(getResources().getDrawable(R.drawable.season_btn_grey));
+            }
+        });
+
+        btnNewest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isNew = true;
+                if(GERNE_ID.equals("all")) {
+                    loadAllFilms();
+                } else {
+                    loadFilterFilms();
+                }
+                btnNewest.setBackgroundDrawable(getResources().getDrawable(R.drawable.season_btn_bg));
+                btnOldest.setBackgroundDrawable(getResources().getDrawable(R.drawable.season_btn_grey));
+            }
+        });
+
         GERNE_ID = getArguments().getString("genre_id");
         COUNTRY_ID = "all";
 
@@ -76,6 +117,8 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
         fDB = FirebaseDatabase.getInstance();
         mDB = fDB.getReference();
 
+        loadCountries();
+
         if(GERNE_ID == "all") {
             loadAllFilms();
         } else {
@@ -87,7 +130,7 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
         rvFilms.setLayoutManager(gridLayoutManager);
 
-        loadCountries();
+
         cAdapter = new CountryAdapter(countries, this);
         rvCountries.setAdapter(cAdapter);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -96,22 +139,56 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
         tvName.setText(getArguments().getString("genre_name"));
     }
 
+    private void loadCountries() {
+        mDB.child("countries").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot itemList : snapshot.getChildren()) {
+                    Country country = itemList.getValue(Country.class);
+                    countries.add(country);
+                }
+                cAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+//    btnNewest.setOnClickListener(new View.OnClickListener() {
+//        @Override
+//        public void onClick(View view) {
+//
+//        }
+//    });
+
     private void loadAllFilms() {
+        mDB = fDB.getReference("films");
+        Query queryDate = mDB.orderByChild("year");
         films.clear();
-        mDB.child("films").addValueEventListener(new ValueEventListener() {
+        queryDate.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot itemList : snapshot.getChildren()) {
                     Film item = itemList.getValue(Film.class);
+                    Log.d("TAG", "new: " + isNew);
                     if(COUNTRY_ID.equals("all")) {
+                        if(isNew) {
+                            films.add(0, item);
+                        }else
                         films.add(item);
                         adapter.notifyDataSetChanged();
+
                     }
 
                     else {
                         if(item.getCountry().equals(COUNTRY_ID)) {
-                            films.add(item);
-                        }
+                            if(isNew) {
+                                films.add(0, item);
+                            }else
+                                films.add(item);}
                         adapter.notifyDataSetChanged();
                     }
 
@@ -126,8 +203,10 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
     }
 
     private void loadFilterFilms() {
+        mDB = fDB.getReference("films");
+        Query queryDate = mDB.orderByChild("year");
         films.clear();
-        mDB.child("films").addValueEventListener(new ValueEventListener() {
+        queryDate.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot itemList : snapshot.getChildren()) {
@@ -137,6 +216,9 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
                         for(int i = 0; i < item.getFilm_genres().size(); i++) {
                             String genre = item.getFilm_genres().get(i);
                             if(genre.equals(GERNE_ID)) {
+                                if(isNew) {
+                                    films.add(0, item);
+                                }else
                                 films.add(item);
                             }
                         }
@@ -147,6 +229,9 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
                             for(int i = 0; i < item.getFilm_genres().size(); i++) {
                                 String genre = item.getFilm_genres().get(i);
                                 if(genre.equals(GERNE_ID)) {
+                                    if(isNew) {
+                                        films.add(0, item);
+                                    }else
                                     films.add(item);
                                 }
                             }
@@ -154,24 +239,6 @@ public class FilterFragment extends Fragment implements FilmAdapter.OnFilmItemCL
                         adapter.notifyDataSetChanged();
                     }
                 }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void loadCountries() {
-        mDB.child("countries").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot itemList : snapshot.getChildren()) {
-                    Country country = itemList.getValue(Country.class);
-                    countries.add(country);
-                }
-                cAdapter.notifyDataSetChanged();
             }
 
             @Override
