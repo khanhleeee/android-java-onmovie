@@ -58,8 +58,7 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
 
     FirebaseDatabase firebaseBD;
     DatabaseReference mDB;
-
-
+    
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -118,6 +117,8 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         rvMonthlyFilm = view.findViewById(R.id.rvYearlyFilm);
         rvActionFilm = view.findViewById(R.id.rvActionFilms);
         rvNoNameFilm = view.findViewById(R.id.rvAnimation);
+
+
         yearlyFilms = new ArrayList<>();
         actionFilms = new ArrayList<>();
         animationFilms = new ArrayList<>();
@@ -143,6 +144,7 @@ public class HomeFragment extends Fragment implements FilmAdapter.OnFilmItemCLic
         rvMonthlyFilm.setLayoutManager(monthlyLayout);
         rvActionFilm.setLayoutManager(actionLayout);
         rvNoNameFilm.setLayoutManager(nonameLayout);
+
     }
 
     // Methods

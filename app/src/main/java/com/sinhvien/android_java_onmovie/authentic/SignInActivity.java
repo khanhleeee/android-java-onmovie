@@ -226,16 +226,15 @@ public class SignInActivity extends AppCompatActivity {
 
     private void updateUI(FirebaseUser user) {
         FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
-        Log.d("AAA", " "+user1);
+
         if(user1 != null){
             Intent intent=new Intent(SignInActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
-            Toast.makeText(SignInActivity.this,
-                    "LOGIN GOOGLE SUCCESSFUL!!!", Toast.LENGTH_SHORT).show();
+
         }
         else {
-            Toast.makeText(SignInActivity.this, "chua co dang nhap bang gg", Toast.LENGTH_SHORT).show();
+
         }
 
     }

@@ -18,15 +18,10 @@ public class BroadcastReceiver extends android.content.BroadcastReceiver {
         if(ConnectivityManager.CONNECTIVITY_ACTION.equals(intent.getAction())){
             if(isNetworkAvailable(context)){
                 Toast.makeText(context, "Đã kết nối internet!", Toast.LENGTH_SHORT).show();
-
             }else {
                 Toast.makeText(context, "Đã ngắt kết nối internet!", Toast.LENGTH_SHORT).show();
-
             }
         }
-    }
-
-    private void setContentView(int disconnect_wifi) {
     }
 
     private boolean isNetworkAvailable(Context context){

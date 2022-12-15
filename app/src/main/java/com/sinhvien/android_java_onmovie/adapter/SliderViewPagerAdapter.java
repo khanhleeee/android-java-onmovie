@@ -1,7 +1,9 @@
 package com.sinhvien.android_java_onmovie.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,9 +20,11 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.sinhvien.android_java_onmovie.MovieDetail;
 import com.sinhvien.android_java_onmovie.R;
 import com.sinhvien.android_java_onmovie.model.Film;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SliderViewPagerAdapter extends RecyclerView.Adapter<SliderViewPagerAdapter.ViewHolder> {
@@ -28,9 +32,11 @@ public class SliderViewPagerAdapter extends RecyclerView.Adapter<SliderViewPager
     private List<Film> films;
     private Context context;
 
+
     public SliderViewPagerAdapter(List<Film> films, Context context) {
         this.films = films;
         this.context = context;
+
     }
 
     @NonNull
@@ -54,6 +60,35 @@ public class SliderViewPagerAdapter extends RecyclerView.Adapter<SliderViewPager
                 }
             });
             holder.name.setText(film.getName());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Bundle bundle = new Bundle();
+
+                    bundle.putString("id", film.getId());
+                    bundle.putString("backdrop", film.getBackdrop());
+                    bundle.putString("name", film.getName());
+                    bundle.putString("country", film.getCountry());
+                    bundle.putString("limitedAge", String.valueOf(film.getLimitedAge()));
+                    bundle.putString("desc", film.getDesc());
+
+                    ArrayList videos = new ArrayList(film.getVideos());
+                    bundle.putStringArrayList("videos", videos);
+
+                    ArrayList trailers = new ArrayList(film.getTrailers());
+                    bundle.putStringArrayList("trailers", trailers);
+
+                    ArrayList genres = new ArrayList(film.getFilm_genres());
+                    bundle.putStringArrayList("genres", genres);
+
+                    ArrayList film_casts = new ArrayList(film.getFilm_casts());
+                    bundle.putStringArrayList("cast", film_casts);
+
+                    Intent intent = new Intent(context, MovieDetail.class);
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
+            });
     }
 
     @Override

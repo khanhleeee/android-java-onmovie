@@ -15,6 +15,9 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,6 +45,7 @@ public class SettingUserDialogFragment extends DialogFragment {
         btnLogout = view.findViewById(R.id.btnLogout);
         btnCancel = view.findViewById(R.id.btnCancel);
 
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +53,14 @@ public class SettingUserDialogFragment extends DialogFragment {
                 Intent intent = new Intent(getContext(), SignInActivity.class);
                 startActivity(intent);
                 getActivity().finish();
+
+                GoogleSignInOptions gso = new GoogleSignInOptions.
+                        Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                        build();
+
+                GoogleSignInClient googleSignInClient=GoogleSignIn.getClient(getContext(),gso);
+                googleSignInClient.signOut();
+
             }
         });
 

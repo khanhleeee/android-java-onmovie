@@ -12,6 +12,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/rvWatchList"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +28,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
+               >
 
                 <ImageView
                     android:id="@+id/imgSetting"

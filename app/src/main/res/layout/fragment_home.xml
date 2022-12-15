@@ -37,7 +37,7 @@
                     <androidx.viewpager2.widget.ViewPager2
                         android:id="@+id/slide_pager"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" >
+                        android:layout_height="match_parent">
 
 
                     </androidx.viewpager2.widget.ViewPager2>
@@ -87,7 +87,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvYearlyFilm"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="180dp"
                         android:padding="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
@@ -112,7 +112,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvActionFilms"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="180dp"
                         android:padding="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -136,7 +136,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvAnimation"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="180dp"
                         android:padding="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"

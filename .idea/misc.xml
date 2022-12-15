@@ -15,17 +15,14 @@
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/drawable/season_btn_grey.xml" value="0.2545" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_detail.xml" value="0.25" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_intro.xml" value="0.129981884057971" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_movie_detail.xml" value="0.264" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_nick_name.xml" value="0.1" />
+        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_nick_name.xml" value="0.264" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_search.xml" value="0.2" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/dialog_setting_user.xml" value="0.264" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/dialog_update_user.xml" value="0.264" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/disconnect_wifi.xml" value="0.25" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_filter.xml" value="0.2" />
-        <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_movies.xml" value="0.14764492753623187" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_nick_name.xml" value="0.25" />
         <entry key="..\:/LTDDNC/Project_OnMovie/Project/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
@@ -57,7 +54,7 @@
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/activity_welcome.xml" value="0.2947916666666667" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/content_stream_film.xml" value="0.14764492753623187" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_filter.xml" value="0.2" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_home.xml" value="0.1" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_movies.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_nick_name.xml" value="0.2947916666666667" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_one_intro.xml" value="0.2708333333333333" />
@@ -66,7 +63,7 @@
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_three_intro.xml" value="0.2390625" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_trailer.xml" value="0.2" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_two_intro.xml" value="0.25625" />
-        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_user.xml" value="0.21195652173913043" />
+        <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/fragment_user.xml" value="0.264" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/layout_screen.xml" value="0.2222222222222222" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/layout_slider.xml" value="0.24912280701754386" />
         <entry key="..\:/Users/MaiKhanh/Desktop/HUFLIT/LTDD-NC/LAB/android-java-onmovie/app/src/main/res/layout/overlay_bg.xml" value="0.29791666666666666" />

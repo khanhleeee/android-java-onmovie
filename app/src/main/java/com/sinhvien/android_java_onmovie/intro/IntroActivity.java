@@ -77,11 +77,10 @@ public class IntroActivity extends AppCompatActivity {
             Intent intent=new Intent(IntroActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
-            Toast.makeText(IntroActivity.this,
-                    "LOGIN GOOGLE SUCCESSFUL!!!", Toast.LENGTH_SHORT).show();
+
         }
         else {
-            Toast.makeText(IntroActivity.this, "chua co dang nhap bang gg", Toast.LENGTH_SHORT).show();
+
         }
 
     }
