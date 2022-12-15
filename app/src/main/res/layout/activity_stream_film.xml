@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:gravity="center"
+    android:orientation="horizontal"
     android:background="@color/black"
     tools:context=".StreamFilmActivity">
 
@@ -15,5 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/back_img"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:rotation="90"-->
+<!--        android:layout_gravity="left"-->
+<!--        app:srcCompat="@drawable/ic_baseline_keyboard_backspace_24" />-->
 
 </LinearLayout>
