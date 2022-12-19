@@ -113,12 +113,13 @@ public class MovieDetail extends AppCompatActivity {
                 }
                 mDB.child("users").child(userID).child("watch_lists").setValue(watch_lists);
                 Log.d("XXX", "" + convertArrayListToHashMap(watch_lists));
-                Toast.makeText(this, "Xoa", Toast.LENGTH_SHORT).show();
+                addlist.setImageResource(R.drawable.ic_nonaddlist);
+                Toast.makeText(this, "Xoá khỏi danh sách thành công", Toast.LENGTH_SHORT).show();
             }
             else {
                 watch_lists.add(id);
                 mDB.child("users").child(userID).child("watch_lists").updateChildren(convertArrayListToHashMap(watch_lists));
-                Toast.makeText(this, "Them", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Thêm vào danh sách thành công", Toast.LENGTH_SHORT).show();
             }
 
         });

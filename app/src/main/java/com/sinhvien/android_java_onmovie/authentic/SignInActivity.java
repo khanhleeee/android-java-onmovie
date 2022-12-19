@@ -100,29 +100,29 @@ public class SignInActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDoalog.show();
+//                progressDoalog.show();
                 String username = etEmail.getText().toString();
                 String password = etPass.getText().toString();
-//                if (etEmail.getText().toString().isEmpty()) {
-//                    etEmail.setError("Không được để trống");
-//                    return;
-//                }
-//                if (etPass.getText().toString().isEmpty()) {
-//                    etPass.setError("Không được để trống");
-//                    return;
-//                }
-//                if (etPass.length() < 6) {
-//                    etPass.setError("Mật khẩu không được dưới 6 ký tự");
-//                    return;
-//                }
-//                else {
-                    Toast.makeText(SignInActivity.this, "OK", Toast.LENGTH_SHORT).show();
+                if (etEmail.getText().toString().isEmpty()) {
+                    etEmail.setError("Không được để trống");
+                    return;
+                }
+                if (etPass.getText().toString().isEmpty()) {
+                    etPass.setError("Không được để trống");
+                    return;
+                }
+                if (etPass.length() < 6) {
+                    etPass.setError("Mật khẩu không được dưới 6 ký tự");
+                    return;
+                }
+                else {
+
                     mAuth = FirebaseAuth.getInstance();
                     mAuth.signInWithEmailAndPassword(username, password)
                             .addOnCompleteListener(SignInActivity.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    progressDoalog.dismiss();
+//                                    progressDoalog.dismiss();
                                     if (task.isSuccessful()) {
                                         if (checkBox.isChecked()){
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -141,16 +141,16 @@ public class SignInActivity extends AppCompatActivity {
                                         Intent loginToMain = new Intent(SignInActivity.this, MainActivity.class);
                                         startActivity(loginToMain);
                                         Toast.makeText(SignInActivity.this,
-                                                "LOGIN SUCCESSFUL !!!", Toast.LENGTH_SHORT).show();
+                                                "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                     }
                                     else {
                                         // If sign in fails, display a message to the user.
                                         Toast.makeText(SignInActivity.this,
-                                                "LOGIN UNSUCCESSFUL!!!", Toast.LENGTH_SHORT).show();
+                                                "Đăng nhập thất bại !!!", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
-//                }
+                }
             }
         });
 

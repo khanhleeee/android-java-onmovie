@@ -78,30 +78,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etEmailLogin" />
 
-    <TextView
-        android:id="@+id/tvForgotPassLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Quên mật khẩu?"
-        android:textColor="@color/white"
-        android:textSize="13dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.837"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
-
-    <View
-        android:id="@+id/underlinePassLogin"
-        android:layout_width="110dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvForgotPassLogin" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnLogin"
@@ -191,7 +167,6 @@
         android:buttonTint="#FFFFFF"
         android:text="Ghi nhớ đăng nhập"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toStartOf="@+id/tvForgotPassLogin"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/etPasswordLogin"
         app:layout_constraintTop_toBottomOf="@+id/etPasswordLogin" />
