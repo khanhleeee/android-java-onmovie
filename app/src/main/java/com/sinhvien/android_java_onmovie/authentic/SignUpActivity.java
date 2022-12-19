@@ -40,13 +40,41 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
-                bundle.putString("email", etEmailSignUp.getText().toString());
-                bundle.putString("password", etPasswordSignUp.getText().toString());
-                Intent e = new Intent(SignUpActivity.this,NickNameActivity.class);
-                e.putExtras(bundle);
-                Log.d("BabyFour", "" + e.putExtras(bundle));
-                startActivity(e);
+
+                if (etEmailSignUp.getText().toString().isEmpty()) {
+                    etEmailSignUp.setError("Không được để trống");
+                    return;
+                }
+                if (etPasswordSignUp.getText().toString().isEmpty()) {
+                    etPasswordSignUp.setError("Không được để trống");
+                    return;
+                }
+                if (etComfirmPasswordSignUp.getText().toString().isEmpty()) {
+                    etComfirmPasswordSignUp.setError("Không được để trống");
+                    return;
+                }
+                if (etPasswordSignUp.length() < 6) {
+                    etPasswordSignUp.setError("Mật khẩu không được dưới 6 ký tự");
+                    return;
+                }
+                if (etComfirmPasswordSignUp.length() < 6) {
+                    etComfirmPasswordSignUp.setError("Mật khẩu không được dưới 6 ký tự");
+                    return;
+                }
+                if (!etPasswordSignUp.getText().toString().equals(etComfirmPasswordSignUp.getText().toString())){
+                    etComfirmPasswordSignUp.setError("Mật khẩu không trùng khớp");
+                    return;
+                }
+                else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("email", etEmailSignUp.getText().toString());
+                    bundle.putString("password", etPasswordSignUp.getText().toString());
+                    Intent e = new Intent(SignUpActivity.this,NickNameActivity.class);
+                    e.putExtras(bundle);
+                    Log.d("BabyFour", "" + e.putExtras(bundle));
+                    startActivity(e);
+                }
+
             }
         });
 
